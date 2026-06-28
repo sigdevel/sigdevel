@@ -4,5 +4,38 @@
 <!-- OPENWALL-CVE-LIST:START -->
 ### Openwall CVE Watch
 
+- [CVE-2025-55639](https://www.openwall.com/lists/oss-security/2026/06/26/2) — CVE-2025-55639: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_add_track_kind on crafted MP4 file
 - [CVE-2025-60471](https://www.openwall.com/lists/oss-security/2026/06/26/3) — CVE-2025-60471: Use-After-Free in GPAC/MP4Box via gf_filter_pid_reconfigure_task_discard on crafted MPEG-2 TS file
+- [CVE-2025-60464](https://www.openwall.com/lists/oss-security/2026/06/26/4) — CVE-2025-60464: NULL Pointer Dereference in GPAC/MP4Box via gf_sei_load_from_state_internal on crafted MPEG-2 TS file
+- [CVE-2025-60474](https://www.openwall.com/lists/oss-security/2026/06/27/5) — CVE-2025-60474: Heap-based Buffer Overflow in GPAC/MP4Box via gf_media_import on crafted MPEG-2 TS file
+- [CVE-2025-60466](https://www.openwall.com/lists/oss-security/2026/06/27/2) — CVE-2025-60466: Expired Pointer Dereference in GPAC/MP4Box via gf_filter_pid_get_packet on crafted MPEG-2 TS file
+- [CVE-2025-60473](https://www.openwall.com/lists/oss-security/2026/06/27/3) — CVE-2025-60473: NULL Pointer Dereference in GPAC/MP4Box via gf_filter_in_parent_chain on crafted MPEG-2 TS file
+- [CVE-2025-60467](https://www.openwall.com/lists/oss-security/2026/06/27/4) — CVE-2025-60467: Use-After-Free in GPAC/MP4Box via gf_filter_pid_inst_swap_delete_task on crafted MPEG-2 TS file
+- [CVE-2025-60474](https://www.openwall.com/lists/oss-security/2026/06/27/5) — CVE-2025-60474: Heap-based Buffer Overflow in GPAC/MP4Box via gf_media_import on crafted MPEG-2 TS file
+- [CVE-2025-52292](https://www.openwall.com/lists/oss-security/2026/06/13/21) — CVE-2025-52292: Stack-based Buffer Overflow in GPAC/MP4Box via filein_process on crafted MP4 file during DASH segmentation
+- [CVE-2025-55662](https://www.openwall.com/lists/oss-security/2026/06/13/20) — CVE-2025-55662: Divide by Zero in GPAC/MP4Box via gf_opus_parse_packet_header on crafted MP4 file with malformed Opus header
+- [CVE-2025-52293](https://www.openwall.com/lists/oss-security/2026/06/13/19) — CVE-2025-52293: Out-of-bounds Read in GPAC/MP4Box via gf_hevc_read_sps_bs_internal on crafted HEVC SPS in MP4 file
+- [CVE-2025-55651](https://www.openwall.com/lists/oss-security/2026/06/13/18) — CVE-2025-55651: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_get_user_data_count on truncated MP4 input
+- [CVE-2025-55659](https://www.openwall.com/lists/oss-security/2026/06/13/17) — CVE-2025-55659: NULL Pointer Dereference in GPAC/MP4Box via ctts_box_write on crafted MP4 file with negative timestamps
+- [CVE-2025-55657](https://www.openwall.com/lists/oss-security/2026/06/13/16) — CVE-2025-55657: NULL Pointer Dereference in GPAC/MP4Box via gf_odf_vvc_cfg_write_bs on crafted MP4 file with unsupported vvc16 box
+- [CVE-2025-55660](https://www.openwall.com/lists/oss-security/2026/06/13/15) — CVE-2025-55660: Stack-based Buffer Overflow in GPAC/MP4Box via gf_opus_read_length on crafted MP4 file with malformed Opus packet
+- [CVE-2025-55663](https://www.openwall.com/lists/oss-security/2026/06/13/14) — CVE-2025-55663: NULL Pointer Dereference in GPAC/MP4Box via Track_SetStreamDescriptor on crafted MP4 with unknown svcC box in av01
+- [CVE-2025-55661](https://www.openwall.com/lists/oss-security/2026/06/13/13) — CVE-2025-55661: Heap-based Buffer Overflow in GPAC/MP4Box via gf_opus_parse_packet_header on crafted MP4 file with malformed Opus packet
+- [CVE-2025-55650](https://www.openwall.com/lists/oss-security/2026/06/13/12) — CVE-2025-55650: Use-After-Free in GPAC/MP4Box via gf_svg_node_del on crafted MP4 file processed with -svg
+- [CVE-2025-55649](https://www.openwall.com/lists/oss-security/2026/06/13/11) — CVE-2025-55649: NULL Pointer Dereference in GPAC/MP4Box via gf_media_map_esd on crafted MP4 with corrupted ESD data
+- [CVE-2025-55648](https://www.openwall.com/lists/oss-security/2026/06/13/10) — CVE-2025-55648: Heap-based Buffer Overflow in GPAC/MP4Box via gf_opus_parse_packet_header on crafted MP4 with corrupted stsz data
+- [CVE-2025-55641](https://www.openwall.com/lists/oss-security/2026/06/13/9) — CVE-2025-55641: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_copy_sample_info on crafted MP4 file with corrupted SAI metadata
+- [CVE-2025-55642](https://www.openwall.com/lists/oss-security/2026/06/13/8) — CVE-2025-55642: Divide by Zero in GPAC/MP4Box via avidmx_process on crafted AVI input with zero declared frames
+- [CVE-2025-55647](https://www.openwall.com/lists/oss-security/2026/06/13/7) — CVE-2025-55647: Integer Overflow in GPAC/MP4Box via mp4_mux_cenc_insert_pssh on crafted MP4 with oversized PSSH metadata
+- [CVE-2025-55645](https://www.openwall.com/lists/oss-security/2026/06/13/6) — CVE-2025-55645: Heap-based Buffer Overflow in GPAC/MP4Box via gf_cenc_set_pssh on crafted MP4 with oversized PSSH payload
+- [CVE-2025-55643](https://www.openwall.com/lists/oss-security/2026/06/13/5) — CVE-2025-55643: NULL Pointer Dereference in GPAC/MP4Box via TrackWriter handling on crafted MP4 with malformed mvcC/stsz metadata during DASH segmentation
+- [CVE-2025-55652](https://www.openwall.com/lists/oss-security/2026/06/13/4) — CVE-2025-55652: Heap-based Buffer Overflow in GPAC/MP4Box via gf_isom_vp_config_new on crafted MP4 with malformed VP codec configuration
+- [CVE-2025-55644](https://www.openwall.com/lists/oss-security/2026/06/13/3) — CVE-2025-55644: Use-After-Free in GPAC/MP4Box via gf_node_get_tag on crafted MP4 file with invalid BIFS GlobalQuantizer command
+- [CVE-2025-70116](https://www.openwall.com/lists/oss-security/2026/05/30/2) — CVE-2025-70116: NULL Pointer Dereference in GPAC/MP4Box via gf_media_map_esd on truncated MP4 input
+- [CVE-2025-60481](https://www.openwall.com/lists/oss-security/2026/06/01/8) — CVE-2025-60481: NULL Pointer Dereference in GPAC/MP4Box via gf_odf_ac4_cfg_dsi_v1 on crafted AC-4 stream
+- [CVE-2025-60483](https://www.openwall.com/lists/oss-security/2026/06/01/9) — CVE-2025-60483: NULL Pointer Dereference in GPAC/MP4Box via gf_ac4_pres_b_4_back_channels_present on crafted AC-4 stream
+- [CVE-2025-55664](https://www.openwall.com/lists/oss-security/2026/06/01/10) — CVE-2025-55664: Heap-based Buffer Overflow in GPAC/MP4Box via m2tsdmx_send_packet on crafted MPEG-2 TS file
+- [CVE-2025-60485](https://www.openwall.com/lists/oss-security/2026/06/01/11) — CVE-2025-60485: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_apple_set_tag_ex on crafted MP4 with corrupted esds box
+- [CVE-2025-60486](https://www.openwall.com/lists/oss-security/2026/06/01/12) — CVE-2025-60486: Use-After-Free in GPAC/MP4Box via dasher_process on crafted MPEG-2 TS file
+- [CVE-2025-60495](https://www.openwall.com/lists/oss-security/2026/06/01/13) — CVE-2025-60495: NULL Pointer Dereference in GPAC/MP4Box via gf_media_get_color_info on crafted MP4 with inconsistent sample entry
 <!-- OPENWALL-CVE-LIST:END -->
