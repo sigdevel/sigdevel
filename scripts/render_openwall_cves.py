@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+"""Render Openwall oss-security CVE links into a GitHub-friendly SVG card."""
+
+from __future__ import annotations
+
+import argparse
+import html
+import re
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
+
+SUBJECT_RE = re.compile(r"Subject:\s*(.+?)(?:\n\s*\n|\r?\n(?:Date|From|To|Message-ID):|$)", re.IGNORECASE | re.DOTALL)
+CVE_RE = re.compile(r"CVE-\d{4}-\d{4,7}", re.IGNORECASE)
+TAG_RE = re.compile(r"<[^>]+>")
+WS_RE = re.compile(r"\s+")
+
+
+@dataclass(frozen=True)
+class CvePost:
+    url: str
+    subject: str
+    cves: tuple[str, ...]
+
+
+def load_urls(path: Path) -> list[str]:
+    urls: list[str] = []
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        urls.append(line)
+    return urls
+
+
+def fetch_text(url: str, timeout: int) -> str:
+    request = Request(url, headers={"User-Agent": "sigdevel-cve-card/1.0"})
+    with urlopen(request, timeout=timeout) as response:
+        charset = response.headers.get_content_charset() or "utf-8"
+        return response.read().decode(charset, errors="replace")
+
+
+def normalize_subject(raw: str) -> str:
+    subject = html.unescape(raw)
+    subject = TAG_RE.sub("", subject)
+    subject = subject.replace("\r", "\n")
+    subject = " ".join(line.strip() for line in subject.splitlines())
+    return WS_RE.sub(" ", subject).strip()
+
+
+def extract_subject(page_text: str) -> str:
+    text = html.unescape(page_text)
+    match = SUBJECT_RE.search(text)
+    if match:
+        return normalize_subject(match.group(1))
+
+    title_match = re.search(r"<title>(.*?)</title>", page_text, re.IGNORECASE | re.DOTALL)
+    if title_match:
+        return normalize_subject(title_match.group(1))
+
+    return "Subject unavailable"
+
+
+def extract_cves(subject: str) -> tuple[str, ...]:
+    seen: set[str] = set()
+    cves: list[str] = []
+    for match in CVE_RE.findall(subject):
+        cve = match.upper()
+        if cve not in seen:
+            seen.add(cve)
+            cves.append(cve)
+    return tuple(cves)
+
+
+def shorten(text: str, max_len: int) -> str:
+    if len(text) <= max_len:
+        return text
+    return text[: max_len - 1].rstrip() + "…"
+
+
+def collect_posts(urls: list[str], timeout: int) -> list[CvePost]:
+    posts: list[CvePost] = []
+    failures: list[str] = []
+    for url in urls:
+        try:
+            page_text = fetch_text(url, timeout)
+            subject = extract_subject(page_text)
+            cves = extract_cves(subject)
+            posts.append(CvePost(url=url, subject=subject, cves=cves))
+        except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            failures.append(f"{url}: {exc}")
+            posts.append(CvePost(url=url, subject="Subject unavailable", cves=()))
+
+    if failures:
+        print("Warnings while fetching Openwall posts:", file=sys.stderr)
+        for failure in failures:
+            print(f"- {failure}", file=sys.stderr)
+    return posts
+
+
+def render_svg(posts: list[CvePost], output: Path) -> None:
+    row_height = 28
+    header_height = 58
+    footer_height = 26
+    width = 700
+    height = header_height + max(len(posts), 1) * row_height + footer_height
+
+    lines = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        "<style>* { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Sans-Serif; } .title { font-size: 22px; fill: #58a6ff; font-weight: 600; } .meta { font-size: 12px; fill: #8b949e; } .cve { font-size: 14px; fill: #f0f6fc; font-weight: 600; } .subject { font-size: 13px; fill: #8b949e; }</style>",
+        '<rect x="1" y="1" rx="5" ry="5" height="99%" width="99.714%" stroke="#2e343b" stroke-width="1" fill="#0d1117"/>',
+        '<text x="30" y="38" class="title">Openwall CVE Watch</text>',
+        f'<text x="30" y="55" class="meta">{len(posts)} tracked oss-security post(s)</text>',
+    ]
+
+    if not posts:
+        lines.append('<text x="30" y="86" class="subject">No Openwall links configured.</text>')
+    else:
+        for index, post in enumerate(posts):
+            y = header_height + index * row_height
+            cve_text = ", ".join(post.cves) if post.cves else "CVE not found"
+            subject = shorten(post.subject, 86)
+            lines.extend(
+                [
+                    f'<a href="{html.escape(post.url, quote=True)}">',
+                    f'<text x="30" y="{y + 16}" class="cve">{html.escape(cve_text)}</text>',
+                    f'<text x="190" y="{y + 16}" class="subject">{html.escape(subject)}</text>',
+                    "</a>",
+                ]
+            )
+
+    lines.append(f'<text x="30" y="{height - 10}" class="meta">Source: Openwall oss-security Subject headers</text>')
+    lines.append("</svg>")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path, default=Path("data/openwall-cve-links.txt"))
+    parser.add_argument("--output", type=Path, default=Path("generated/openwall-cve-watch.svg"))
+    parser.add_argument("--timeout", type=int, default=20)
+    args = parser.parse_args()
+
+    urls = load_urls(args.input)
+    posts = collect_posts(urls, args.timeout)
+    render_svg(posts, args.output)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
