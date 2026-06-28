@@ -101,11 +101,8 @@ def collect_posts(urls: list[str], timeout: int) -> list[CvePost]:
 
 
 def render_svg(posts: list[CvePost], output: Path) -> None:
-    row_height = 28
-    header_height = 58
-    footer_height = 26
     width = 700
-    height = header_height + max(len(posts), 1) * row_height + footer_height
+    height = 82
 
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
@@ -114,22 +111,6 @@ def render_svg(posts: list[CvePost], output: Path) -> None:
         '<text x="30" y="38" class="title">Openwall CVE Watch</text>',
         f'<text x="30" y="55" class="meta">{len(posts)} tracked oss-security post(s)</text>',
     ]
-
-    if not posts:
-        lines.append('<text x="30" y="86" class="subject">No Openwall links configured.</text>')
-    else:
-        for index, post in enumerate(posts):
-            y = header_height + index * row_height
-            cve_text = ", ".join(post.cves) if post.cves else "CVE not found"
-            subject = shorten(post.subject, 86)
-            lines.extend(
-                [
-                    f'<a href="{html.escape(post.url, quote=True)}">',
-                    f'<text x="30" y="{y + 16}" class="cve">{html.escape(cve_text)}</text>',
-                    f'<text x="190" y="{y + 16}" class="subject">{html.escape(subject)}</text>',
-                    "</a>",
-                ]
-            )
 
     lines.append(f'<text x="30" y="{height - 10}" class="meta">Source: Openwall oss-security Subject headers</text>')
     lines.append("</svg>")
