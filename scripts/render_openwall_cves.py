@@ -106,10 +106,10 @@ def render_svg(posts: list[CvePost], output: Path) -> None:
 
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-        "<style>* { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Sans-Serif; } .title { font-size: 22px; fill: #58a6ff; font-weight: 600; } .meta { font-size: 12px; fill: #8b949e; } .cve { font-size: 14px; fill: #f0f6fc; font-weight: 600; } .subject { font-size: 13px; fill: #8b949e; }</style>",
+        "<style>* { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Sans-Serif; } .title { font-size: 22px; fill: #58a6ff; font-weight: 600; } .meta { font-size: 12px; fill: #8b949e; } .metric-number { font-size: 20px; fill: #f0f6fc; font-weight: 700; } .cve { font-size: 14px; fill: #f0f6fc; font-weight: 600; } .subject { font-size: 13px; fill: #8b949e; }</style>",
         '<rect x="1" y="1" rx="5" ry="5" height="99%" width="99.714%" stroke="#2e343b" stroke-width="1" fill="#0d1117"/>',
         '<text x="30" y="38" class="title">Openwall CVE Watch</text>',
-        f'<text x="30" y="55" class="meta">{len(posts)} tracked oss-security post(s)</text>',
+        f'<text x="30" y="58" class="meta"><tspan class="metric-number">{len(posts)}</tspan> tracked oss-security post(s)</text>',
     ]
 
     lines.append(f'<text x="30" y="{height - 10}" class="meta">Source: Openwall oss-security Subject headers</text>')
