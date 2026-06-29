@@ -28,8 +28,8 @@ class CvePost:
 def load_urls(path: Path) -> list[str]:
     urls: list[str] = []
     for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#"):
+        line = raw_line.split("#", 1)[0].strip()
+        if not line or not line.startswith(("http://", "https://")):
             continue
         urls.append(line)
     return urls
