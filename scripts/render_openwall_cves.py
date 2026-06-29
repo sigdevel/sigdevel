@@ -27,10 +27,12 @@ class CvePost:
 
 def load_urls(path: Path) -> list[str]:
     urls: list[str] = []
+    seen: set[str] = set()
     for raw_line in path.read_text(encoding="utf-8").splitlines():
         line = raw_line.split("#", 1)[0].strip()
-        if not line or not line.startswith(("http://", "https://")):
+        if not line or not line.startswith(("http://", "https://")) or line in seen:
             continue
+        seen.add(line)
         urls.append(line)
     return urls
 
@@ -100,6 +102,37 @@ def collect_posts(urls: list[str], timeout: int) -> list[CvePost]:
     return posts
 
 
+def escape_markdown_cell(text: str) -> str:
+    return text.replace("|", r"\|").replace("\n", " ")
+
+
+def render_markdown_table(posts: list[CvePost]) -> str:
+    rows = ["| CVE | Description |", "| --- | --- |"]
+    for post in posts:
+        subject = escape_markdown_cell(post.subject)
+        cves = post.cves or ("—",)
+        for cve in cves:
+            if cve == "—":
+                cve_cell = cve
+            else:
+                cve_cell = f"[{cve}]({post.url})"
+            rows.append(f"| {cve_cell} | [{subject}]({post.url}) |")
+    return "\n".join(rows) + "\n"
+
+
+def update_readme_table(readme: Path, posts: list[CvePost]) -> None:
+    content = readme.read_text(encoding="utf-8")
+    table = render_markdown_table(posts)
+    table_re = re.compile(
+        r"^\| CVE \| Description \|\n\| --- \| --- \|\n(?:^\| .* \| .* \|\n?)*",
+        re.MULTILINE,
+    )
+    updated, replacements = table_re.subn(table, content, count=1)
+    if replacements != 1:
+        raise ValueError(f"Could not find CVE table in {readme}")
+    readme.write_text(updated, encoding="utf-8")
+
+
 def render_svg(posts: list[CvePost], output: Path) -> None:
     width = 700
     height = 82
@@ -122,12 +155,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=Path("data/openwall-cve-links.txt"))
     parser.add_argument("--output", type=Path, default=Path("generated/openwall-cve-watch.svg"))
+    parser.add_argument("--readme", type=Path, default=Path("README.md"))
     parser.add_argument("--timeout", type=int, default=20)
     args = parser.parse_args()
 
     urls = load_urls(args.input)
     posts = collect_posts(urls, args.timeout)
     render_svg(posts, args.output)
+    update_readme_table(args.readme, posts)
     return 0
 
 
