@@ -5,6 +5,11 @@
 
 | CVE | Description |
 | --- | --- |
+| [CVE-2023-0645](https://www.openwall.com/lists/oss-security/2026/06/29/3) | [CVE-2023-0645: libjxl/cjxl out-of-bounds read in EXIF metadata parsing](https://www.openwall.com/lists/oss-security/2026/06/29/3) |
+| [CVE-2025-70103](https://www.openwall.com/lists/oss-security/2026/05/30/7) | [CVE-2025-70103: Heap-based Buffer Overflow in libjxl/cjxl via jxl::extras::DecodeImagePNM on crafted PBM file](https://www.openwall.com/lists/oss-security/2026/05/30/7) |
+| [CVE-2025-70099](https://www.openwall.com/lists/oss-security/2026/06/29/4) | [CVE-2025-70099: lwext4 NULL pointer dereference in ext4_dir_en_get_name_len](https://www.openwall.com/lists/oss-security/2026/06/29/4) |
+| [CVE-2025-70100](https://www.openwall.com/lists/oss-security/2026/06/29/5) | [CVE-2025-70100: lwext4 divide-by-zero in ext4_block_set_lb_size](https://www.openwall.com/lists/oss-security/2026/06/29/5) |
+| [CVE-2025-70101](https://www.openwall.com/lists/oss-security/2026/06/29/6) | [CVE-2025-70101: lwext4 out-of-bounds read in ext4_ext_binsearch_idx](https://www.openwall.com/lists/oss-security/2026/06/29/6) |
 | [CVE-2025-55639](https://www.openwall.com/lists/oss-security/2026/06/26/2) | [CVE-2025-55639: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_add_track_kind on crafted MP4 file](https://www.openwall.com/lists/oss-security/2026/06/26/2) |
 | [CVE-2025-60471](https://www.openwall.com/lists/oss-security/2026/06/26/3) | [CVE-2025-60471: Use-After-Free in GPAC/MP4Box via gf_filter_pid_reconfigure_task_discard on crafted MPEG-2 TS file](https://www.openwall.com/lists/oss-security/2026/06/26/3) |
 | [CVE-2025-60464](https://www.openwall.com/lists/oss-security/2026/06/26/4) | [CVE-2025-60464: NULL Pointer Dereference in GPAC/MP4Box via gf_sei_load_from_state_internal on crafted MPEG-2 TS file](https://www.openwall.com/lists/oss-security/2026/06/26/4) |
