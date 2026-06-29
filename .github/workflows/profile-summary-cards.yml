@@ -15,18 +15,19 @@ jobs:
       contents: write
       
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           USERNAME: ${{ github.repository_owner }}
+          AUTO_PUSH: false
       - name: Render Openwall CVE watch card
         run: python3 scripts/render_openwall_cves.py
       - name: Commit Openwall CVE watch card
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add generated/openwall-cve-watch.svg
-          git diff --cached --quiet || git commit -m "Update Openwall CVE watch card"
+          git add profile-summary-card-output generated/openwall-cve-watch.svg
+          git diff --cached --quiet || git commit -m "Update generated profile assets"
           git push
