@@ -106,6 +106,13 @@ def escape_markdown_cell(text: str) -> str:
     return text.replace("|", r"\|").replace("\n", " ")
 
 
+def with_minimum_cell_height(cell: str, visible_text: str, min_chars: int = 90) -> str:
+    """Add a blank visual line to short markdown cells for consistent row height."""
+    if len(visible_text) >= min_chars or cell.endswith("<br>&nbsp;"):
+        return cell
+    return f"{cell}<br>&nbsp;"
+
+
 def render_markdown_table(posts: list[CvePost]) -> str:
     rows = ["| CVE | Description |", "| --- | --- |"]
     for post in posts:
@@ -116,7 +123,8 @@ def render_markdown_table(posts: list[CvePost]) -> str:
                 cve_cell = cve
             else:
                 cve_cell = f"[{cve}]({post.url})"
-            rows.append(f"| {cve_cell} | [{subject}]({post.url}) |")
+            description_cell = with_minimum_cell_height(f"[{subject}]({post.url})", subject)
+            rows.append(f"| {cve_cell} | {description_cell} |")
     return "\n".join(rows) + "\n"
 
 
