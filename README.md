@@ -3,7 +3,7 @@
 [![](https://raw.githubusercontent.com/sigdevel/sigdevel-stats/master/generated/openwall-cve-watch.svg)](https://www.openwall.com/lists/oss-security/)
 
 <details>
-<summary><strong>CVE — Description</strong></summary>
+<summary><h2>CVE - Description</h2></summary>
 
 | CVE | Description |
 | --- | --- |
