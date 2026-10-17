@@ -47,7 +47,6 @@
 | [CVE-2025-60485](https://www.openwall.com/lists/oss-security/2026/06/01/11) | [CVE-2025-60485: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_apple_set_tag_ex on crafted MP4 with corrupted esds box](https://www.openwall.com/lists/oss-security/2026/06/01/11) |
 | [CVE-2025-60486](https://www.openwall.com/lists/oss-security/2026/06/01/12) | [CVE-2025-60486: Use-After-Free in GPAC/MP4Box via dasher_process on crafted MPEG-2 TS file](https://www.openwall.com/lists/oss-security/2026/06/01/12) |
 | [CVE-2025-60495](https://www.openwall.com/lists/oss-security/2026/06/01/13) | [CVE-2025-60495: NULL Pointer Dereference in GPAC/MP4Box via gf_media_get_color_info on crafted MP4 with inconsistent sample entry](https://www.openwall.com/lists/oss-security/2026/06/01/13) |
-| [CVE-2025-55640](https://www.openwall.com/lists/oss-security/2026/10/17/2) | [CVE-2025-55640: Heap Buffer Overflow in GPAC/MP4Box via
- stbl_AddSize on crafted MP4 with corrupted sample metadata](https://www.openwall.com/lists/oss-security/2026/10/17/2) |
+| [CVE-2025-55640](https://www.openwall.com/lists/oss-security/2026/10/17/2) | [CVE-2025-55640: Heap Buffer Overflow in GPAC/MP4Box via stbl_AddSize on crafted MP4 with corrupted sample metadata](https://www.openwall.com/lists/oss-security/2026/10/17/2) |
 
 </details>
