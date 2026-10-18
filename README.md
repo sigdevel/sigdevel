@@ -51,3 +51,5 @@
 | [CVE-2025-55653](https://www.openwall.com/lists/oss-security/2026/10/17/4) | [CVE-2025-55653: Divide by Zero in GPAC/MP4Box via gf_parse_lfrac on crafted MP4 with zero-denominator fraction](https://www.openwall.com/lists/oss-security/2026/10/17/4) |
 
 </details>
+
+[Openwall CVE PNG cards](generated/openwall-cves/README.md) · [Generation instructions](scripts/README.md)
