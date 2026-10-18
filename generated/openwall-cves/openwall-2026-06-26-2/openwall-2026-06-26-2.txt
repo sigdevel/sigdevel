@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/26/2
+
+Subject:
+CVE-2025-55639: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_add_track_kind on crafted MP4 file
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit 78c2c9be29a41b38eca2c53d280442088a71dab9
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/23/23_poc.mp4
+
+References:
+https://github.com/gpac/gpac/issues/3260
+https://www.cve.org/CVERecord?id=CVE-2025-55639
+https://infosec.exchange/@sigdevel/116769184815236865
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>

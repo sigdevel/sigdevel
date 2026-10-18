@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/13/19
+
+Subject:
+CVE-2025-52293: Out-of-bounds Read in GPAC/MP4Box via gf_hevc_read_sps_bs_internal on crafted HEVC SPS in MP4 file
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit (8a0d5b43c242fe4befb88530e4c9afef37114161)
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/3/3_poc.mp4
+
+References:
+https://github.com/gpac/gpac/issues/3146
+https://www.cve.org/CVERecord?id=CVE-2025-52293
+https://infosec.exchange/@sigdevel/116710484148913883
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>

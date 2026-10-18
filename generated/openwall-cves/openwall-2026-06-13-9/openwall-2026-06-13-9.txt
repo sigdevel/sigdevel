@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/13/9
+
+Subject:
+CVE-2025-55641: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_copy_sample_info on crafted MP4 file with corrupted SAI metadata
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit (f87b30611380e4dcd03cd4dd9ac553c0ec336826)
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/13/13_poc.mp4
+
+References:
+https://github.com/gpac/gpac/issues/3195
+https://www.cve.org/CVERecord?id=CVE-2025-55641
+https://infosec.exchange/@sigdevel/116736775314270129
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>

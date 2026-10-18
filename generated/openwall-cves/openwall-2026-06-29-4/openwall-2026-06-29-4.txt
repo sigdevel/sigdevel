@@ -1,0 +1,26 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/29/4
+
+Subject:
+CVE-2025-70099: lwext4 NULL pointer dereference in ext4_dir_en_get_name_len
+
+Product:
+lwext4
+
+Affected:
+lwext4 1.0.0, commit 58bcf89a121b72d4fb66334f1693d3b30e4cb9c5
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/lwext4/1/sig11_2_1_lwext4_ext4_dir_h_126
+
+References:
+https://github.com/gkostka/lwext4/issues/89
+https://github.com/sigdevel/pocs/blob/main/res/lwext4/1/sig11_2_1_lwext4_ext4_dir_h_126
+https://github.com/Aladdin-R-D/lwext4/releases/tag/v1.0.1
+https://www.cve.org/CVERecord?id=CVE-2025-70099
+https://nvd.nist.gov/vuln/detail/CVE-2025-70099
+https://infosec.exchange/@sigdevel/116668939725424227
+https://bdu.fstec.ru/vul/2025-15477
+
+Reporter:
+Alexander A. Shvedov (@sigdevel) & Daniil Dulov
