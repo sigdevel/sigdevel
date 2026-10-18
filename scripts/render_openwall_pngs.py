@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate one PNG and a linked Markdown index per unique Openwall post."""
+"""Generate a directory with PNG and TXT files per unique Openwall post."""
 from __future__ import annotations
 
 import argparse
@@ -145,12 +145,22 @@ def render_png(card: Card, output: Path) -> None:
 def render_index(cards: list[Card]) -> str:
     lines = ['# Openwall CVE cards', '', 'One card per unique source URL. PNG links are plain text; use the clickable links below.', '']
     for card in cards:
-        lines += [f'## {escape(card.fields["Subject"])}', '', f'[![Openwall CVE card]({card_filename(card.url)})]({card.url})', '', f'Source: <{card.url}>', '']
+        filename = card_filename(card.url)
+        stem = Path(filename).stem
+        lines += [f'## {escape(card.fields["Subject"])}', '', f'[![Openwall CVE card]({stem}/{filename})]({card.url})', '', f'[Links and details (TXT)]({stem}/{stem}.txt)', '', f'Source: <{card.url}>', '']
         for name in ('PoC', 'References'):
             lines += [f'**{name}:**', '']
             lines += [f'- <{url}>' for url in card.fields[name].splitlines()] or ['Not provided in source.']
             lines.append('')
     return '\n'.join(lines)
+
+
+def render_text(card: Card) -> str:
+    """Keep full, unwrapped field values and URLs easy to copy."""
+    sections = [f'Source:\n{card.url}']
+    for name in FIELDS:
+        sections.append(f'{name}:\n{card.fields[name] or "Not provided in source"}')
+    return '\n\n'.join(sections) + '\n'
 
 
 def main() -> int:
@@ -170,8 +180,15 @@ def main() -> int:
             return 1
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for card in cards:
-        render_png(card, args.output_dir / card_filename(card.url))
+        filename = card_filename(card.url)
+        stem = Path(filename).stem
+        directory = args.output_dir / stem
+        render_png(card, directory / filename)
+        (directory / f'{stem}.txt').write_text(render_text(card), encoding='utf-8')
     (args.output_dir / 'README.md').write_text(render_index(cards), encoding='utf-8')
+    # Migrate only the old flat PNGs for posts successfully generated above.
+    for card in cards:
+        (args.output_dir / card_filename(card.url)).unlink(missing_ok=True)
     print(f'Generated {len(cards)} PNG cards in {args.output_dir}')
     return 0
 

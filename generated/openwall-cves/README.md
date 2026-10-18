@@ -4,7 +4,9 @@ One card per unique source URL. PNG links are plain text; use the clickable link
 
 ## CVE-2023-0645: libjxl/cjxl out-of-bounds read in EXIF metadata parsing
 
-[![Openwall CVE card](openwall-2026-06-29-3.png)](https://www.openwall.com/lists/oss-security/2026/06/29/3)
+[![Openwall CVE card](openwall-2026-06-29-3/openwall-2026-06-29-3.png)](https://www.openwall.com/lists/oss-security/2026/06/29/3)
+
+[Links and details (TXT)](openwall-2026-06-29-3/openwall-2026-06-29-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/3>
 
@@ -21,7 +23,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/3>
 
 ## CVE-2025-70103: Heap-based Buffer Overflow in libjxl/cjxl via jxl::extras::DecodeImagePNM on crafted PBM file
 
-[![Openwall CVE card](openwall-2026-05-30-7.png)](https://www.openwall.com/lists/oss-security/2026/05/30/7)
+[![Openwall CVE card](openwall-2026-05-30-7/openwall-2026-05-30-7.png)](https://www.openwall.com/lists/oss-security/2026/05/30/7)
+
+[Links and details (TXT)](openwall-2026-05-30-7/openwall-2026-05-30-7.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/05/30/7>
 
@@ -37,7 +41,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/05/30/7>
 
 ## CVE-2025-70099: lwext4 NULL pointer dereference in ext4_dir_en_get_name_len
 
-[![Openwall CVE card](openwall-2026-06-29-4.png)](https://www.openwall.com/lists/oss-security/2026/06/29/4)
+[![Openwall CVE card](openwall-2026-06-29-4/openwall-2026-06-29-4.png)](https://www.openwall.com/lists/oss-security/2026/06/29/4)
+
+[Links and details (TXT)](openwall-2026-06-29-4/openwall-2026-06-29-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/4>
 
@@ -57,7 +63,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/4>
 
 ## CVE-2025-70100: lwext4 divide-by-zero in ext4_block_set_lb_size
 
-[![Openwall CVE card](openwall-2026-06-29-5.png)](https://www.openwall.com/lists/oss-security/2026/06/29/5)
+[![Openwall CVE card](openwall-2026-06-29-5/openwall-2026-06-29-5.png)](https://www.openwall.com/lists/oss-security/2026/06/29/5)
+
+[Links and details (TXT)](openwall-2026-06-29-5/openwall-2026-06-29-5.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/5>
 
@@ -77,7 +85,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/5>
 
 ## CVE-2025-70101: lwext4 out-of-bounds read in ext4_ext_binsearch_idx
 
-[![Openwall CVE card](openwall-2026-06-29-6.png)](https://www.openwall.com/lists/oss-security/2026/06/29/6)
+[![Openwall CVE card](openwall-2026-06-29-6/openwall-2026-06-29-6.png)](https://www.openwall.com/lists/oss-security/2026/06/29/6)
+
+[Links and details (TXT)](openwall-2026-06-29-6/openwall-2026-06-29-6.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/6>
 
@@ -97,7 +107,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/6>
 
 ## CVE-2025-55639: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_add_track_kind on crafted MP4 file
 
-[![Openwall CVE card](openwall-2026-06-26-2.png)](https://www.openwall.com/lists/oss-security/2026/06/26/2)
+[![Openwall CVE card](openwall-2026-06-26-2/openwall-2026-06-26-2.png)](https://www.openwall.com/lists/oss-security/2026/06/26/2)
+
+[Links and details (TXT)](openwall-2026-06-26-2/openwall-2026-06-26-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/26/2>
 
@@ -113,7 +125,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/26/2>
 
 ## CVE-2025-60471: Use-After-Free in GPAC/MP4Box via gf_filter_pid_reconfigure_task_discard on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-26-3.png)](https://www.openwall.com/lists/oss-security/2026/06/26/3)
+[![Openwall CVE card](openwall-2026-06-26-3/openwall-2026-06-26-3.png)](https://www.openwall.com/lists/oss-security/2026/06/26/3)
+
+[Links and details (TXT)](openwall-2026-06-26-3/openwall-2026-06-26-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/26/3>
 
@@ -129,7 +143,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/26/3>
 
 ## CVE-2025-60464: NULL Pointer Dereference in GPAC/MP4Box via gf_sei_load_from_state_internal on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-26-4.png)](https://www.openwall.com/lists/oss-security/2026/06/26/4)
+[![Openwall CVE card](openwall-2026-06-26-4/openwall-2026-06-26-4.png)](https://www.openwall.com/lists/oss-security/2026/06/26/4)
+
+[Links and details (TXT)](openwall-2026-06-26-4/openwall-2026-06-26-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/26/4>
 
@@ -145,7 +161,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/26/4>
 
 ## CVE-2025-60474: Heap-based Buffer Overflow in GPAC/MP4Box via gf_media_import on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-27-5.png)](https://www.openwall.com/lists/oss-security/2026/06/27/5)
+[![Openwall CVE card](openwall-2026-06-27-5/openwall-2026-06-27-5.png)](https://www.openwall.com/lists/oss-security/2026/06/27/5)
+
+[Links and details (TXT)](openwall-2026-06-27-5/openwall-2026-06-27-5.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/5>
 
@@ -161,7 +179,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/5>
 
 ## CVE-2025-60466: Expired Pointer Dereference in GPAC/MP4Box via gf_filter_pid_get_packet on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-27-2.png)](https://www.openwall.com/lists/oss-security/2026/06/27/2)
+[![Openwall CVE card](openwall-2026-06-27-2/openwall-2026-06-27-2.png)](https://www.openwall.com/lists/oss-security/2026/06/27/2)
+
+[Links and details (TXT)](openwall-2026-06-27-2/openwall-2026-06-27-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/2>
 
@@ -177,7 +197,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/2>
 
 ## CVE-2025-60473: NULL Pointer Dereference in GPAC/MP4Box via gf_filter_in_parent_chain on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-27-3.png)](https://www.openwall.com/lists/oss-security/2026/06/27/3)
+[![Openwall CVE card](openwall-2026-06-27-3/openwall-2026-06-27-3.png)](https://www.openwall.com/lists/oss-security/2026/06/27/3)
+
+[Links and details (TXT)](openwall-2026-06-27-3/openwall-2026-06-27-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/3>
 
@@ -193,7 +215,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/3>
 
 ## CVE-2025-60467: Use-After-Free in GPAC/MP4Box via gf_filter_pid_inst_swap_delete_task on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-27-4.png)](https://www.openwall.com/lists/oss-security/2026/06/27/4)
+[![Openwall CVE card](openwall-2026-06-27-4/openwall-2026-06-27-4.png)](https://www.openwall.com/lists/oss-security/2026/06/27/4)
+
+[Links and details (TXT)](openwall-2026-06-27-4/openwall-2026-06-27-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/4>
 
@@ -209,7 +233,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/4>
 
 ## CVE-2025-52292: Stack-based Buffer Overflow in GPAC/MP4Box via filein_process on crafted MP4 file during DASH segmentation
 
-[![Openwall CVE card](openwall-2026-06-13-21.png)](https://www.openwall.com/lists/oss-security/2026/06/13/21)
+[![Openwall CVE card](openwall-2026-06-13-21/openwall-2026-06-13-21.png)](https://www.openwall.com/lists/oss-security/2026/06/13/21)
+
+[Links and details (TXT)](openwall-2026-06-13-21/openwall-2026-06-13-21.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/21>
 
@@ -225,7 +251,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/21>
 
 ## CVE-2025-55662: Divide by Zero in GPAC/MP4Box via gf_opus_parse_packet_header on crafted MP4 file with malformed Opus header
 
-[![Openwall CVE card](openwall-2026-06-13-20.png)](https://www.openwall.com/lists/oss-security/2026/06/13/20)
+[![Openwall CVE card](openwall-2026-06-13-20/openwall-2026-06-13-20.png)](https://www.openwall.com/lists/oss-security/2026/06/13/20)
+
+[Links and details (TXT)](openwall-2026-06-13-20/openwall-2026-06-13-20.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/20>
 
@@ -241,7 +269,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/20>
 
 ## CVE-2025-52293: Out-of-bounds Read in GPAC/MP4Box via gf_hevc_read_sps_bs_internal on crafted HEVC SPS in MP4 file
 
-[![Openwall CVE card](openwall-2026-06-13-19.png)](https://www.openwall.com/lists/oss-security/2026/06/13/19)
+[![Openwall CVE card](openwall-2026-06-13-19/openwall-2026-06-13-19.png)](https://www.openwall.com/lists/oss-security/2026/06/13/19)
+
+[Links and details (TXT)](openwall-2026-06-13-19/openwall-2026-06-13-19.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/19>
 
@@ -257,7 +287,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/19>
 
 ## CVE-2025-55651: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_get_user_data_count on truncated MP4 input
 
-[![Openwall CVE card](openwall-2026-06-13-18.png)](https://www.openwall.com/lists/oss-security/2026/06/13/18)
+[![Openwall CVE card](openwall-2026-06-13-18/openwall-2026-06-13-18.png)](https://www.openwall.com/lists/oss-security/2026/06/13/18)
+
+[Links and details (TXT)](openwall-2026-06-13-18/openwall-2026-06-13-18.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/18>
 
@@ -273,7 +305,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/18>
 
 ## CVE-2025-55659: NULL Pointer Dereference in GPAC/MP4Box via ctts_box_write on crafted MP4 file with negative timestamps
 
-[![Openwall CVE card](openwall-2026-06-13-17.png)](https://www.openwall.com/lists/oss-security/2026/06/13/17)
+[![Openwall CVE card](openwall-2026-06-13-17/openwall-2026-06-13-17.png)](https://www.openwall.com/lists/oss-security/2026/06/13/17)
+
+[Links and details (TXT)](openwall-2026-06-13-17/openwall-2026-06-13-17.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/17>
 
@@ -289,7 +323,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/17>
 
 ## CVE-2025-55657: NULL Pointer Dereference in GPAC/MP4Box via gf_odf_vvc_cfg_write_bs on crafted MP4 file with unsupported vvc16 box
 
-[![Openwall CVE card](openwall-2026-06-13-16.png)](https://www.openwall.com/lists/oss-security/2026/06/13/16)
+[![Openwall CVE card](openwall-2026-06-13-16/openwall-2026-06-13-16.png)](https://www.openwall.com/lists/oss-security/2026/06/13/16)
+
+[Links and details (TXT)](openwall-2026-06-13-16/openwall-2026-06-13-16.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/16>
 
@@ -305,7 +341,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/16>
 
 ## CVE-2025-55660: Stack-based Buffer Overflow in GPAC/MP4Box via gf_opus_read_length on crafted MP4 file with malformed Opus packet
 
-[![Openwall CVE card](openwall-2026-06-13-15.png)](https://www.openwall.com/lists/oss-security/2026/06/13/15)
+[![Openwall CVE card](openwall-2026-06-13-15/openwall-2026-06-13-15.png)](https://www.openwall.com/lists/oss-security/2026/06/13/15)
+
+[Links and details (TXT)](openwall-2026-06-13-15/openwall-2026-06-13-15.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/15>
 
@@ -321,7 +359,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/15>
 
 ## CVE-2025-55663: NULL Pointer Dereference in GPAC/MP4Box via Track_SetStreamDescriptor on crafted MP4 with unknown svcC box in av01
 
-[![Openwall CVE card](openwall-2026-06-13-14.png)](https://www.openwall.com/lists/oss-security/2026/06/13/14)
+[![Openwall CVE card](openwall-2026-06-13-14/openwall-2026-06-13-14.png)](https://www.openwall.com/lists/oss-security/2026/06/13/14)
+
+[Links and details (TXT)](openwall-2026-06-13-14/openwall-2026-06-13-14.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/14>
 
@@ -337,7 +377,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/14>
 
 ## CVE-2025-55661: Heap-based Buffer Overflow in GPAC/MP4Box via gf_opus_parse_packet_header on crafted MP4 file with malformed Opus packet
 
-[![Openwall CVE card](openwall-2026-06-13-13.png)](https://www.openwall.com/lists/oss-security/2026/06/13/13)
+[![Openwall CVE card](openwall-2026-06-13-13/openwall-2026-06-13-13.png)](https://www.openwall.com/lists/oss-security/2026/06/13/13)
+
+[Links and details (TXT)](openwall-2026-06-13-13/openwall-2026-06-13-13.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/13>
 
@@ -353,7 +395,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/13>
 
 ## CVE-2025-55650: Use-After-Free in GPAC/MP4Box via gf_svg_node_del on crafted MP4 file processed with -svg
 
-[![Openwall CVE card](openwall-2026-06-13-12.png)](https://www.openwall.com/lists/oss-security/2026/06/13/12)
+[![Openwall CVE card](openwall-2026-06-13-12/openwall-2026-06-13-12.png)](https://www.openwall.com/lists/oss-security/2026/06/13/12)
+
+[Links and details (TXT)](openwall-2026-06-13-12/openwall-2026-06-13-12.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/12>
 
@@ -369,7 +413,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/12>
 
 ## CVE-2025-55649: NULL Pointer Dereference in GPAC/MP4Box via gf_media_map_esd on crafted MP4 with corrupted ESD data
 
-[![Openwall CVE card](openwall-2026-06-13-11.png)](https://www.openwall.com/lists/oss-security/2026/06/13/11)
+[![Openwall CVE card](openwall-2026-06-13-11/openwall-2026-06-13-11.png)](https://www.openwall.com/lists/oss-security/2026/06/13/11)
+
+[Links and details (TXT)](openwall-2026-06-13-11/openwall-2026-06-13-11.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/11>
 
@@ -385,7 +431,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/11>
 
 ## CVE-2025-55648: Heap-based Buffer Overflow in GPAC/MP4Box via gf_opus_parse_packet_header on crafted MP4 with corrupted stsz data
 
-[![Openwall CVE card](openwall-2026-06-13-10.png)](https://www.openwall.com/lists/oss-security/2026/06/13/10)
+[![Openwall CVE card](openwall-2026-06-13-10/openwall-2026-06-13-10.png)](https://www.openwall.com/lists/oss-security/2026/06/13/10)
+
+[Links and details (TXT)](openwall-2026-06-13-10/openwall-2026-06-13-10.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/10>
 
@@ -401,7 +449,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/10>
 
 ## CVE-2025-55641: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_copy_sample_info on crafted MP4 file with corrupted SAI metadata
 
-[![Openwall CVE card](openwall-2026-06-13-9.png)](https://www.openwall.com/lists/oss-security/2026/06/13/9)
+[![Openwall CVE card](openwall-2026-06-13-9/openwall-2026-06-13-9.png)](https://www.openwall.com/lists/oss-security/2026/06/13/9)
+
+[Links and details (TXT)](openwall-2026-06-13-9/openwall-2026-06-13-9.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/9>
 
@@ -417,7 +467,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/9>
 
 ## CVE-2025-55642: Divide by Zero in GPAC/MP4Box via avidmx_process on crafted AVI input with zero declared frames
 
-[![Openwall CVE card](openwall-2026-06-13-8.png)](https://www.openwall.com/lists/oss-security/2026/06/13/8)
+[![Openwall CVE card](openwall-2026-06-13-8/openwall-2026-06-13-8.png)](https://www.openwall.com/lists/oss-security/2026/06/13/8)
+
+[Links and details (TXT)](openwall-2026-06-13-8/openwall-2026-06-13-8.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/8>
 
@@ -433,7 +485,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/8>
 
 ## CVE-2025-55647: Integer Overflow in GPAC/MP4Box via mp4_mux_cenc_insert_pssh on crafted MP4 with oversized PSSH metadata
 
-[![Openwall CVE card](openwall-2026-06-13-7.png)](https://www.openwall.com/lists/oss-security/2026/06/13/7)
+[![Openwall CVE card](openwall-2026-06-13-7/openwall-2026-06-13-7.png)](https://www.openwall.com/lists/oss-security/2026/06/13/7)
+
+[Links and details (TXT)](openwall-2026-06-13-7/openwall-2026-06-13-7.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/7>
 
@@ -449,7 +503,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/7>
 
 ## CVE-2025-55645: Heap-based Buffer Overflow in GPAC/MP4Box via gf_cenc_set_pssh on crafted MP4 with oversized PSSH payload
 
-[![Openwall CVE card](openwall-2026-06-13-6.png)](https://www.openwall.com/lists/oss-security/2026/06/13/6)
+[![Openwall CVE card](openwall-2026-06-13-6/openwall-2026-06-13-6.png)](https://www.openwall.com/lists/oss-security/2026/06/13/6)
+
+[Links and details (TXT)](openwall-2026-06-13-6/openwall-2026-06-13-6.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/6>
 
@@ -465,7 +521,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/6>
 
 ## CVE-2025-55643: NULL Pointer Dereference in GPAC/MP4Box via TrackWriter handling on crafted MP4 with malformed mvcC/stsz metadata during DASH segmentation
 
-[![Openwall CVE card](openwall-2026-06-13-5.png)](https://www.openwall.com/lists/oss-security/2026/06/13/5)
+[![Openwall CVE card](openwall-2026-06-13-5/openwall-2026-06-13-5.png)](https://www.openwall.com/lists/oss-security/2026/06/13/5)
+
+[Links and details (TXT)](openwall-2026-06-13-5/openwall-2026-06-13-5.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/5>
 
@@ -481,7 +539,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/5>
 
 ## CVE-2025-55652: Heap-based Buffer Overflow in GPAC/MP4Box via gf_isom_vp_config_new on crafted MP4 with malformed VP codec configuration
 
-[![Openwall CVE card](openwall-2026-06-13-4.png)](https://www.openwall.com/lists/oss-security/2026/06/13/4)
+[![Openwall CVE card](openwall-2026-06-13-4/openwall-2026-06-13-4.png)](https://www.openwall.com/lists/oss-security/2026/06/13/4)
+
+[Links and details (TXT)](openwall-2026-06-13-4/openwall-2026-06-13-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/4>
 
@@ -497,7 +557,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/4>
 
 ## CVE-2025-55644: Use-After-Free in GPAC/MP4Box via gf_node_get_tag on crafted MP4 file with invalid BIFS GlobalQuantizer command
 
-[![Openwall CVE card](openwall-2026-06-13-3.png)](https://www.openwall.com/lists/oss-security/2026/06/13/3)
+[![Openwall CVE card](openwall-2026-06-13-3/openwall-2026-06-13-3.png)](https://www.openwall.com/lists/oss-security/2026/06/13/3)
+
+[Links and details (TXT)](openwall-2026-06-13-3/openwall-2026-06-13-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/3>
 
@@ -513,7 +575,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/3>
 
 ## CVE-2025-70116: NULL Pointer Dereference in GPAC/MP4Box via gf_media_map_esd on truncated MP4 input
 
-[![Openwall CVE card](openwall-2026-05-30-2.png)](https://www.openwall.com/lists/oss-security/2026/05/30/2)
+[![Openwall CVE card](openwall-2026-05-30-2/openwall-2026-05-30-2.png)](https://www.openwall.com/lists/oss-security/2026/05/30/2)
+
+[Links and details (TXT)](openwall-2026-05-30-2/openwall-2026-05-30-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/05/30/2>
 
@@ -529,7 +593,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/05/30/2>
 
 ## CVE-2025-60481: NULL Pointer Dereference in GPAC/MP4Box via gf_odf_ac4_cfg_dsi_v1 on crafted AC-4 stream
 
-[![Openwall CVE card](openwall-2026-06-01-8.png)](https://www.openwall.com/lists/oss-security/2026/06/01/8)
+[![Openwall CVE card](openwall-2026-06-01-8/openwall-2026-06-01-8.png)](https://www.openwall.com/lists/oss-security/2026/06/01/8)
+
+[Links and details (TXT)](openwall-2026-06-01-8/openwall-2026-06-01-8.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/8>
 
@@ -545,7 +611,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/8>
 
 ## CVE-2025-60483: NULL Pointer Dereference in GPAC/MP4Box via gf_ac4_pres_b_4_back_channels_present on crafted AC-4 stream
 
-[![Openwall CVE card](openwall-2026-06-01-9.png)](https://www.openwall.com/lists/oss-security/2026/06/01/9)
+[![Openwall CVE card](openwall-2026-06-01-9/openwall-2026-06-01-9.png)](https://www.openwall.com/lists/oss-security/2026/06/01/9)
+
+[Links and details (TXT)](openwall-2026-06-01-9/openwall-2026-06-01-9.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/9>
 
@@ -561,7 +629,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/9>
 
 ## CVE-2025-55664: Heap-based Buffer Overflow in GPAC/MP4Box via m2tsdmx_send_packet on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-01-10.png)](https://www.openwall.com/lists/oss-security/2026/06/01/10)
+[![Openwall CVE card](openwall-2026-06-01-10/openwall-2026-06-01-10.png)](https://www.openwall.com/lists/oss-security/2026/06/01/10)
+
+[Links and details (TXT)](openwall-2026-06-01-10/openwall-2026-06-01-10.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/10>
 
@@ -577,7 +647,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/10>
 
 ## CVE-2025-60485: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_apple_set_tag_ex on crafted MP4 with corrupted esds box
 
-[![Openwall CVE card](openwall-2026-06-01-11.png)](https://www.openwall.com/lists/oss-security/2026/06/01/11)
+[![Openwall CVE card](openwall-2026-06-01-11/openwall-2026-06-01-11.png)](https://www.openwall.com/lists/oss-security/2026/06/01/11)
+
+[Links and details (TXT)](openwall-2026-06-01-11/openwall-2026-06-01-11.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/11>
 
@@ -593,7 +665,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/11>
 
 ## CVE-2025-60486: Use-After-Free in GPAC/MP4Box via dasher_process on crafted MPEG-2 TS file
 
-[![Openwall CVE card](openwall-2026-06-01-12.png)](https://www.openwall.com/lists/oss-security/2026/06/01/12)
+[![Openwall CVE card](openwall-2026-06-01-12/openwall-2026-06-01-12.png)](https://www.openwall.com/lists/oss-security/2026/06/01/12)
+
+[Links and details (TXT)](openwall-2026-06-01-12/openwall-2026-06-01-12.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/12>
 
@@ -609,7 +683,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/12>
 
 ## CVE-2025-60495: NULL Pointer Dereference in GPAC/MP4Box via gf_media_get_color_info on crafted MP4 with inconsistent sample entry
 
-[![Openwall CVE card](openwall-2026-06-01-13.png)](https://www.openwall.com/lists/oss-security/2026/06/01/13)
+[![Openwall CVE card](openwall-2026-06-01-13/openwall-2026-06-01-13.png)](https://www.openwall.com/lists/oss-security/2026/06/01/13)
+
+[Links and details (TXT)](openwall-2026-06-01-13/openwall-2026-06-01-13.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/13>
 
@@ -625,7 +701,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/13>
 
 ## CVE-2025-55640: Heap Buffer Overflow in GPAC/MP4Box via stbl_AddSize on crafted MP4 with corrupted sample metadata
 
-[![Openwall CVE card](openwall-2026-10-17-2.png)](https://www.openwall.com/lists/oss-security/2026/10/17/2)
+[![Openwall CVE card](openwall-2026-10-17-2/openwall-2026-10-17-2.png)](https://www.openwall.com/lists/oss-security/2026/10/17/2)
+
+[Links and details (TXT)](openwall-2026-10-17-2/openwall-2026-10-17-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/10/17/2>
 
@@ -641,7 +719,9 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/17/2>
 
 ## CVE-2025-55653: Divide by Zero in GPAC/MP4Box via gf_parse_lfrac on crafted MP4 with zero-denominator fraction
 
-[![Openwall CVE card](openwall-2026-10-17-4.png)](https://www.openwall.com/lists/oss-security/2026/10/17/4)
+[![Openwall CVE card](openwall-2026-10-17-4/openwall-2026-10-17-4.png)](https://www.openwall.com/lists/oss-security/2026/10/17/4)
+
+[Links and details (TXT)](openwall-2026-10-17-4/openwall-2026-10-17-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/10/17/4>
 

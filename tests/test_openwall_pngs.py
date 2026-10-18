@@ -69,14 +69,29 @@ class RendererTests(unittest.TestCase):
             with patch.object(sys, 'argv', args), patch.object(renderer, 'fetch_text', return_value=PAGE) as fetch:
                 self.assertEqual(renderer.main(), 0)
                 fetch.assert_called_once()
-            pngs = list((p / 'cards').glob('*.png'))
+            pngs = list((p / 'cards').glob('*/*.png'))
             self.assertEqual(len(pngs), 1)
             self.assertEqual(pngs[0].name, 'openwall-2026-06-29-3.png')
+            self.assertEqual(pngs[0].parent.name, 'openwall-2026-06-29-3')
+            text = pngs[0].with_suffix('.txt').read_text()
+            self.assertIn(f'Source:\n{URL}', text)
+            self.assertIn('https://nvd.nist.gov/vuln/detail/CVE-2023-0645', text)
+            self.assertIn('https://infosec.exchange/@sigdevel', text)
             with Image.open(pngs[0]) as image:
                 self.assertEqual(image.format, 'PNG')
                 self.assertEqual(image.width, 1200)
                 image.verify()
             self.assertIn('<https://nvd.nist.gov/vuln/detail/CVE-2023-0645>', (p / 'cards/README.md').read_text())
+            self.assertIn('(openwall-2026-06-29-3/openwall-2026-06-29-3.txt)', (p / 'cards/README.md').read_text())
+            # An upgrade removes its old flat image, preserving unrelated files.
+            legacy = p / 'cards' / pngs[0].name
+            legacy.write_bytes(b'old image')
+            unrelated = p / 'cards/custom.png'
+            unrelated.write_bytes(b'user image')
+            with patch.object(sys, 'argv', args), patch.object(renderer, 'fetch_text', return_value=PAGE):
+                self.assertEqual(renderer.main(), 0)
+            self.assertFalse(legacy.exists())
+            self.assertEqual(unrelated.read_bytes(), b'user image')
 
     def test_failure_keeps_existing_outputs(self):
         with tempfile.TemporaryDirectory() as td:

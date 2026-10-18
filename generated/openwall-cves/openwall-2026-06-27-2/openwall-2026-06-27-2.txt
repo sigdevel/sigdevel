@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/27/2
+
+Subject:
+CVE-2025-60466: Expired Pointer Dereference in GPAC/MP4Box via gf_filter_pid_get_packet on crafted MPEG-2 TS file
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit (see References)
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/35/35_gf_filter_pid_get_packet_filter_core_filter_pid_c_6827
+
+References:
+https://github.com/gpac/gpac/issues/3284
+https://www.cve.org/CVERecord?id=CVE-2025-60466
+https://infosec.exchange/@sigdevel/116780402249845037
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>

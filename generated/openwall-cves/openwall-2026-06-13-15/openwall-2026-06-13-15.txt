@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/13/15
+
+Subject:
+CVE-2025-55660: Stack-based Buffer Overflow in GPAC/MP4Box via gf_opus_read_length on crafted MP4 file with malformed Opus packet
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit (ff8249a407685d00ceb5f4d2a798b9cad195140e)
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/7/7_poc.mp4
+
+References:
+https://github.com/gpac/gpac/issues/3161
+https://www.cve.org/CVERecord?id=CVE-2025-55660
+https://infosec.exchange/@sigdevel/116733892068649310
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>

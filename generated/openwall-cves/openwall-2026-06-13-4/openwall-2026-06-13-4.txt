@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/13/4
+
+Subject:
+CVE-2025-55652: Heap-based Buffer Overflow in GPAC/MP4Box via gf_isom_vp_config_new on crafted MP4 with malformed VP codec configuration
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit (74fecde32cd477ab097f3e6db55a32b259f3313d)
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/18/18_poc.mp4
+
+References:
+https://github.com/gpac/gpac/issues/3242
+https://www.cve.org/CVERecord?id=CVE-2025-55652
+https://infosec.exchange/@sigdevel/116736829161374790
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>
