@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/27/5
+
+Subject:
+CVE-2025-60474: Heap-based Buffer Overflow in GPAC/MP4Box via gf_media_import on crafted MPEG-2 TS file
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit (see References)
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/38/38_gf_media_import_media_tools_media_import_c_1297
+
+References:
+https://github.com/gpac/gpac/issues/3287
+https://www.cve.org/CVERecord?id=CVE-2025-60474
+https://infosec.exchange/@sigdevel/116780566799952592
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>

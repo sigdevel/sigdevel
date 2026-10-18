@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/26/3
+
+Subject:
+CVE-2025-60471: Use-After-Free in GPAC/MP4Box via gf_filter_pid_reconfigure_task_discard on crafted MPEG-2 TS file
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit 62714f27c64a3d1eb7e880f9eed2d38673cb43ce
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/31/31_gf_filter_pid_reconfigure_task_discard_filter_core_filter_pid_c_1341
+
+References:
+https://github.com/gpac/gpac/issues/3279
+https://www.cve.org/CVERecord?id=CVE-2025-60471
+https://infosec.exchange/@sigdevel/116778301425195980
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>

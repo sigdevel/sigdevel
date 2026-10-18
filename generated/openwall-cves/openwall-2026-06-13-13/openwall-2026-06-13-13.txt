@@ -1,0 +1,22 @@
+Source:
+https://www.openwall.com/lists/oss-security/2026/06/13/13
+
+Subject:
+CVE-2025-55661: Heap-based Buffer Overflow in GPAC/MP4Box via gf_opus_parse_packet_header on crafted MP4 file with malformed Opus packet
+
+Product:
+GPAC (MP4Box)
+
+Affected:
+gpac/gpac prior to fix commit (ff8249a407685d00ceb5f4d2a798b9cad195140e)
+
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/9/9_poc.mp4
+
+References:
+https://github.com/gpac/gpac/issues/3160
+https://www.cve.org/CVERecord?id=CVE-2025-55661
+https://infosec.exchange/@sigdevel/116733907390103029
+
+Reporter:
+sigdevel <https://infosec.exchange/@sigdevel>
