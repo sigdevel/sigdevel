@@ -1,15 +1,3 @@
-Source:
-https://www.openwall.com/lists/oss-security/2026/10/17/4
-
-Subject:
-CVE-2025-55653: Divide by Zero in GPAC/MP4Box via gf_parse_lfrac on crafted MP4 with zero-denominator fraction
-
-Product:
-GPAC (MP4Box)
-
-Affected:
-gpac/gpac prior to fix commit (4bbb6e5f7cb827e56f32b2f7a5918b0b8e395eb8)
-
 PoC:
 https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/21/21_poc.mp4
 
@@ -17,6 +5,3 @@ References:
 https://github.com/gpac/gpac/issues/3247
 https://www.cve.org/CVERecord?id=CVE-2025-55653
 https://infosec.exchange/@sigdevel/116769079013422405
-
-Reporter:
-@sigdevel (Alexander Shvedov) <https://infosec.exchange/@sigdevel>

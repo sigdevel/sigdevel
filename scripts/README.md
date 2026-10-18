@@ -18,13 +18,14 @@ generated/openwall-cves/openwall-2026-10-17-4/
   openwall-2026-10-17-4.txt
 ```
 
-The TXT file contains the source URL and all card fields, including full PoC,
-reference and reporter links, without visual line wrapping.
+The TXT file contains only the `PoC:` and `References:` sections with full
+URLs, without visual line wrapping.
 Names include the source date and message number,
 so different posts about the same CVE remain separate cards.
 
-Cards display Subject, Product, Affected, PoC, References and Reporter, parsed
-from the publication's message body. When there is no PoC section, links to
+PNG cards display Subject, Product, Affected and Reporter, parsed
+from the publication's message body, plus the source URL. PoC and References
+are exported to TXT only and do not appear in the PNG. When there is no PoC section, links to
 `github.com/sigdevel/pocs/` in References are also shown as PoC. Missing fields read `Not provided in
 source`; values are never inferred. All source references are included. Text
 and long URLs wrap to fit, and image height grows with content.

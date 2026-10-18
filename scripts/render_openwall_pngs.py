@@ -16,6 +16,7 @@ from PIL import Image, ImageDraw, ImageFont
 from render_openwall_cves import fetch_text, load_urls
 
 FIELDS = ('Subject', 'Product', 'Affected', 'PoC', 'References', 'Reporter')
+PNG_FIELDS = ('Subject', 'Product', 'Affected', 'Reporter')
 
 
 class MessageParser(HTMLParser):
@@ -120,7 +121,7 @@ def render_png(card: Card, output: Path) -> None:
     title = ImageFont.load_default(size=29)
     layout = []
     y = 84
-    for name in FIELDS:
+    for name in PNG_FIELDS:
         font = title if name == 'Subject' else body
         lines = wrap_text(card.fields[name] or 'Not provided in source', font, width - 2 * padding)
         layout.append((name, lines, font, y))
@@ -147,7 +148,7 @@ def render_index(cards: list[Card]) -> str:
     for card in cards:
         filename = card_filename(card.url)
         stem = Path(filename).stem
-        lines += [f'## {escape(card.fields["Subject"])}', '', f'[![Openwall CVE card]({stem}/{filename})]({card.url})', '', f'[Links and details (TXT)]({stem}/{stem}.txt)', '', f'Source: <{card.url}>', '']
+        lines += [f'## {escape(card.fields["Subject"])}', '', f'[![Openwall CVE card]({stem}/{filename})]({card.url})', '', f'[PoC and References (TXT)]({stem}/{stem}.txt)', '', f'Source: <{card.url}>', '']
         for name in ('PoC', 'References'):
             lines += [f'**{name}:**', '']
             lines += [f'- <{url}>' for url in card.fields[name].splitlines()] or ['Not provided in source.']
@@ -156,9 +157,9 @@ def render_index(cards: list[Card]) -> str:
 
 
 def render_text(card: Card) -> str:
-    """Keep full, unwrapped field values and URLs easy to copy."""
-    sections = [f'Source:\n{card.url}']
-    for name in FIELDS:
+    """Export only PoC and reference links, without visual line wrapping."""
+    sections = []
+    for name in ('PoC', 'References'):
         sections.append(f'{name}:\n{card.fields[name] or "Not provided in source"}')
     return '\n\n'.join(sections) + '\n'
 

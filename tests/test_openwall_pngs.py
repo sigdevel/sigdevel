@@ -2,7 +2,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from PIL import Image, ImageFont
 
@@ -61,6 +61,19 @@ class RendererTests(unittest.TestCase):
         self.assertEqual(''.join(lines), url)
         self.assertTrue(all(font.getlength(line) <= 300 for line in lines))
 
+    def test_png_excludes_poc_and_references(self):
+        card = renderer.parse_card(PAGE, URL)
+        with tempfile.TemporaryDirectory() as td:
+            # Inspect the text sent to Pillow while still exercising real drawing.
+            draw = MagicMock(wraps=renderer.ImageDraw.Draw(Image.new('RGB', (1200, 1200))))
+            with patch.object(renderer.ImageDraw, 'Draw', return_value=draw):
+                renderer.render_png(card, Path(td) / 'card.png')
+            texts = [call.args[1] for call in draw.text.call_args_list]
+            self.assertTrue({'SUBJECT', 'PRODUCT', 'AFFECTED', 'REPORTER'}.issubset(texts))
+            self.assertNotIn('POC', texts)
+            self.assertNotIn('REFERENCES', texts)
+            self.assertFalse(any('nvd.nist.gov' in text or 'github.com/sigdevel/pocs' in text for text in texts))
+
     def test_cli_deduplicates_and_renders_valid_png(self):
         with tempfile.TemporaryDirectory() as td:
             p = Path(td)
@@ -74,9 +87,7 @@ class RendererTests(unittest.TestCase):
             self.assertEqual(pngs[0].name, 'openwall-2026-06-29-3.png')
             self.assertEqual(pngs[0].parent.name, 'openwall-2026-06-29-3')
             text = pngs[0].with_suffix('.txt').read_text()
-            self.assertIn(f'Source:\n{URL}', text)
-            self.assertIn('https://nvd.nist.gov/vuln/detail/CVE-2023-0645', text)
-            self.assertIn('https://infosec.exchange/@sigdevel', text)
+            self.assertEqual(text, 'PoC:\nhttps://github.com/sigdevel/pocs/blob/main/res/libjxl/2022_01_25/sig_11_src_000122_poc\n\nReferences:\nhttps://nvd.nist.gov/vuln/detail/CVE-2023-0645\nhttps://github.com/libjxl/libjxl/issues/2100\n')
             with Image.open(pngs[0]) as image:
                 self.assertEqual(image.format, 'PNG')
                 self.assertEqual(image.width, 1200)

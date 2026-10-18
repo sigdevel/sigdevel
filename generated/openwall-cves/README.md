@@ -6,7 +6,7 @@ One card per unique source URL. PNG links are plain text; use the clickable link
 
 [![Openwall CVE card](openwall-2026-06-29-3/openwall-2026-06-29-3.png)](https://www.openwall.com/lists/oss-security/2026/06/29/3)
 
-[Links and details (TXT)](openwall-2026-06-29-3/openwall-2026-06-29-3.txt)
+[PoC and References (TXT)](openwall-2026-06-29-3/openwall-2026-06-29-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/3>
 
@@ -25,7 +25,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/3>
 
 [![Openwall CVE card](openwall-2026-05-30-7/openwall-2026-05-30-7.png)](https://www.openwall.com/lists/oss-security/2026/05/30/7)
 
-[Links and details (TXT)](openwall-2026-05-30-7/openwall-2026-05-30-7.txt)
+[PoC and References (TXT)](openwall-2026-05-30-7/openwall-2026-05-30-7.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/05/30/7>
 
@@ -43,7 +43,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/05/30/7>
 
 [![Openwall CVE card](openwall-2026-06-29-4/openwall-2026-06-29-4.png)](https://www.openwall.com/lists/oss-security/2026/06/29/4)
 
-[Links and details (TXT)](openwall-2026-06-29-4/openwall-2026-06-29-4.txt)
+[PoC and References (TXT)](openwall-2026-06-29-4/openwall-2026-06-29-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/4>
 
@@ -65,7 +65,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/4>
 
 [![Openwall CVE card](openwall-2026-06-29-5/openwall-2026-06-29-5.png)](https://www.openwall.com/lists/oss-security/2026/06/29/5)
 
-[Links and details (TXT)](openwall-2026-06-29-5/openwall-2026-06-29-5.txt)
+[PoC and References (TXT)](openwall-2026-06-29-5/openwall-2026-06-29-5.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/5>
 
@@ -87,7 +87,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/5>
 
 [![Openwall CVE card](openwall-2026-06-29-6/openwall-2026-06-29-6.png)](https://www.openwall.com/lists/oss-security/2026/06/29/6)
 
-[Links and details (TXT)](openwall-2026-06-29-6/openwall-2026-06-29-6.txt)
+[PoC and References (TXT)](openwall-2026-06-29-6/openwall-2026-06-29-6.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/29/6>
 
@@ -109,7 +109,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/6>
 
 [![Openwall CVE card](openwall-2026-06-26-2/openwall-2026-06-26-2.png)](https://www.openwall.com/lists/oss-security/2026/06/26/2)
 
-[Links and details (TXT)](openwall-2026-06-26-2/openwall-2026-06-26-2.txt)
+[PoC and References (TXT)](openwall-2026-06-26-2/openwall-2026-06-26-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/26/2>
 
@@ -127,7 +127,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/26/2>
 
 [![Openwall CVE card](openwall-2026-06-26-3/openwall-2026-06-26-3.png)](https://www.openwall.com/lists/oss-security/2026/06/26/3)
 
-[Links and details (TXT)](openwall-2026-06-26-3/openwall-2026-06-26-3.txt)
+[PoC and References (TXT)](openwall-2026-06-26-3/openwall-2026-06-26-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/26/3>
 
@@ -145,7 +145,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/26/3>
 
 [![Openwall CVE card](openwall-2026-06-26-4/openwall-2026-06-26-4.png)](https://www.openwall.com/lists/oss-security/2026/06/26/4)
 
-[Links and details (TXT)](openwall-2026-06-26-4/openwall-2026-06-26-4.txt)
+[PoC and References (TXT)](openwall-2026-06-26-4/openwall-2026-06-26-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/26/4>
 
@@ -163,7 +163,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/26/4>
 
 [![Openwall CVE card](openwall-2026-06-27-5/openwall-2026-06-27-5.png)](https://www.openwall.com/lists/oss-security/2026/06/27/5)
 
-[Links and details (TXT)](openwall-2026-06-27-5/openwall-2026-06-27-5.txt)
+[PoC and References (TXT)](openwall-2026-06-27-5/openwall-2026-06-27-5.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/5>
 
@@ -181,7 +181,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/5>
 
 [![Openwall CVE card](openwall-2026-06-27-2/openwall-2026-06-27-2.png)](https://www.openwall.com/lists/oss-security/2026/06/27/2)
 
-[Links and details (TXT)](openwall-2026-06-27-2/openwall-2026-06-27-2.txt)
+[PoC and References (TXT)](openwall-2026-06-27-2/openwall-2026-06-27-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/2>
 
@@ -199,7 +199,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/2>
 
 [![Openwall CVE card](openwall-2026-06-27-3/openwall-2026-06-27-3.png)](https://www.openwall.com/lists/oss-security/2026/06/27/3)
 
-[Links and details (TXT)](openwall-2026-06-27-3/openwall-2026-06-27-3.txt)
+[PoC and References (TXT)](openwall-2026-06-27-3/openwall-2026-06-27-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/3>
 
@@ -217,7 +217,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/3>
 
 [![Openwall CVE card](openwall-2026-06-27-4/openwall-2026-06-27-4.png)](https://www.openwall.com/lists/oss-security/2026/06/27/4)
 
-[Links and details (TXT)](openwall-2026-06-27-4/openwall-2026-06-27-4.txt)
+[PoC and References (TXT)](openwall-2026-06-27-4/openwall-2026-06-27-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/27/4>
 
@@ -235,7 +235,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/4>
 
 [![Openwall CVE card](openwall-2026-06-13-21/openwall-2026-06-13-21.png)](https://www.openwall.com/lists/oss-security/2026/06/13/21)
 
-[Links and details (TXT)](openwall-2026-06-13-21/openwall-2026-06-13-21.txt)
+[PoC and References (TXT)](openwall-2026-06-13-21/openwall-2026-06-13-21.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/21>
 
@@ -253,7 +253,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/21>
 
 [![Openwall CVE card](openwall-2026-06-13-20/openwall-2026-06-13-20.png)](https://www.openwall.com/lists/oss-security/2026/06/13/20)
 
-[Links and details (TXT)](openwall-2026-06-13-20/openwall-2026-06-13-20.txt)
+[PoC and References (TXT)](openwall-2026-06-13-20/openwall-2026-06-13-20.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/20>
 
@@ -271,7 +271,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/20>
 
 [![Openwall CVE card](openwall-2026-06-13-19/openwall-2026-06-13-19.png)](https://www.openwall.com/lists/oss-security/2026/06/13/19)
 
-[Links and details (TXT)](openwall-2026-06-13-19/openwall-2026-06-13-19.txt)
+[PoC and References (TXT)](openwall-2026-06-13-19/openwall-2026-06-13-19.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/19>
 
@@ -289,7 +289,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/19>
 
 [![Openwall CVE card](openwall-2026-06-13-18/openwall-2026-06-13-18.png)](https://www.openwall.com/lists/oss-security/2026/06/13/18)
 
-[Links and details (TXT)](openwall-2026-06-13-18/openwall-2026-06-13-18.txt)
+[PoC and References (TXT)](openwall-2026-06-13-18/openwall-2026-06-13-18.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/18>
 
@@ -307,7 +307,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/18>
 
 [![Openwall CVE card](openwall-2026-06-13-17/openwall-2026-06-13-17.png)](https://www.openwall.com/lists/oss-security/2026/06/13/17)
 
-[Links and details (TXT)](openwall-2026-06-13-17/openwall-2026-06-13-17.txt)
+[PoC and References (TXT)](openwall-2026-06-13-17/openwall-2026-06-13-17.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/17>
 
@@ -325,7 +325,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/17>
 
 [![Openwall CVE card](openwall-2026-06-13-16/openwall-2026-06-13-16.png)](https://www.openwall.com/lists/oss-security/2026/06/13/16)
 
-[Links and details (TXT)](openwall-2026-06-13-16/openwall-2026-06-13-16.txt)
+[PoC and References (TXT)](openwall-2026-06-13-16/openwall-2026-06-13-16.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/16>
 
@@ -343,7 +343,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/16>
 
 [![Openwall CVE card](openwall-2026-06-13-15/openwall-2026-06-13-15.png)](https://www.openwall.com/lists/oss-security/2026/06/13/15)
 
-[Links and details (TXT)](openwall-2026-06-13-15/openwall-2026-06-13-15.txt)
+[PoC and References (TXT)](openwall-2026-06-13-15/openwall-2026-06-13-15.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/15>
 
@@ -361,7 +361,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/15>
 
 [![Openwall CVE card](openwall-2026-06-13-14/openwall-2026-06-13-14.png)](https://www.openwall.com/lists/oss-security/2026/06/13/14)
 
-[Links and details (TXT)](openwall-2026-06-13-14/openwall-2026-06-13-14.txt)
+[PoC and References (TXT)](openwall-2026-06-13-14/openwall-2026-06-13-14.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/14>
 
@@ -379,7 +379,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/14>
 
 [![Openwall CVE card](openwall-2026-06-13-13/openwall-2026-06-13-13.png)](https://www.openwall.com/lists/oss-security/2026/06/13/13)
 
-[Links and details (TXT)](openwall-2026-06-13-13/openwall-2026-06-13-13.txt)
+[PoC and References (TXT)](openwall-2026-06-13-13/openwall-2026-06-13-13.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/13>
 
@@ -397,7 +397,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/13>
 
 [![Openwall CVE card](openwall-2026-06-13-12/openwall-2026-06-13-12.png)](https://www.openwall.com/lists/oss-security/2026/06/13/12)
 
-[Links and details (TXT)](openwall-2026-06-13-12/openwall-2026-06-13-12.txt)
+[PoC and References (TXT)](openwall-2026-06-13-12/openwall-2026-06-13-12.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/12>
 
@@ -415,7 +415,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/12>
 
 [![Openwall CVE card](openwall-2026-06-13-11/openwall-2026-06-13-11.png)](https://www.openwall.com/lists/oss-security/2026/06/13/11)
 
-[Links and details (TXT)](openwall-2026-06-13-11/openwall-2026-06-13-11.txt)
+[PoC and References (TXT)](openwall-2026-06-13-11/openwall-2026-06-13-11.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/11>
 
@@ -433,7 +433,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/11>
 
 [![Openwall CVE card](openwall-2026-06-13-10/openwall-2026-06-13-10.png)](https://www.openwall.com/lists/oss-security/2026/06/13/10)
 
-[Links and details (TXT)](openwall-2026-06-13-10/openwall-2026-06-13-10.txt)
+[PoC and References (TXT)](openwall-2026-06-13-10/openwall-2026-06-13-10.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/10>
 
@@ -451,7 +451,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/10>
 
 [![Openwall CVE card](openwall-2026-06-13-9/openwall-2026-06-13-9.png)](https://www.openwall.com/lists/oss-security/2026/06/13/9)
 
-[Links and details (TXT)](openwall-2026-06-13-9/openwall-2026-06-13-9.txt)
+[PoC and References (TXT)](openwall-2026-06-13-9/openwall-2026-06-13-9.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/9>
 
@@ -469,7 +469,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/9>
 
 [![Openwall CVE card](openwall-2026-06-13-8/openwall-2026-06-13-8.png)](https://www.openwall.com/lists/oss-security/2026/06/13/8)
 
-[Links and details (TXT)](openwall-2026-06-13-8/openwall-2026-06-13-8.txt)
+[PoC and References (TXT)](openwall-2026-06-13-8/openwall-2026-06-13-8.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/8>
 
@@ -487,7 +487,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/8>
 
 [![Openwall CVE card](openwall-2026-06-13-7/openwall-2026-06-13-7.png)](https://www.openwall.com/lists/oss-security/2026/06/13/7)
 
-[Links and details (TXT)](openwall-2026-06-13-7/openwall-2026-06-13-7.txt)
+[PoC and References (TXT)](openwall-2026-06-13-7/openwall-2026-06-13-7.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/7>
 
@@ -505,7 +505,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/7>
 
 [![Openwall CVE card](openwall-2026-06-13-6/openwall-2026-06-13-6.png)](https://www.openwall.com/lists/oss-security/2026/06/13/6)
 
-[Links and details (TXT)](openwall-2026-06-13-6/openwall-2026-06-13-6.txt)
+[PoC and References (TXT)](openwall-2026-06-13-6/openwall-2026-06-13-6.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/6>
 
@@ -523,7 +523,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/6>
 
 [![Openwall CVE card](openwall-2026-06-13-5/openwall-2026-06-13-5.png)](https://www.openwall.com/lists/oss-security/2026/06/13/5)
 
-[Links and details (TXT)](openwall-2026-06-13-5/openwall-2026-06-13-5.txt)
+[PoC and References (TXT)](openwall-2026-06-13-5/openwall-2026-06-13-5.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/5>
 
@@ -541,7 +541,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/5>
 
 [![Openwall CVE card](openwall-2026-06-13-4/openwall-2026-06-13-4.png)](https://www.openwall.com/lists/oss-security/2026/06/13/4)
 
-[Links and details (TXT)](openwall-2026-06-13-4/openwall-2026-06-13-4.txt)
+[PoC and References (TXT)](openwall-2026-06-13-4/openwall-2026-06-13-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/4>
 
@@ -559,7 +559,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/4>
 
 [![Openwall CVE card](openwall-2026-06-13-3/openwall-2026-06-13-3.png)](https://www.openwall.com/lists/oss-security/2026/06/13/3)
 
-[Links and details (TXT)](openwall-2026-06-13-3/openwall-2026-06-13-3.txt)
+[PoC and References (TXT)](openwall-2026-06-13-3/openwall-2026-06-13-3.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/13/3>
 
@@ -577,7 +577,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/13/3>
 
 [![Openwall CVE card](openwall-2026-05-30-2/openwall-2026-05-30-2.png)](https://www.openwall.com/lists/oss-security/2026/05/30/2)
 
-[Links and details (TXT)](openwall-2026-05-30-2/openwall-2026-05-30-2.txt)
+[PoC and References (TXT)](openwall-2026-05-30-2/openwall-2026-05-30-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/05/30/2>
 
@@ -595,7 +595,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/05/30/2>
 
 [![Openwall CVE card](openwall-2026-06-01-8/openwall-2026-06-01-8.png)](https://www.openwall.com/lists/oss-security/2026/06/01/8)
 
-[Links and details (TXT)](openwall-2026-06-01-8/openwall-2026-06-01-8.txt)
+[PoC and References (TXT)](openwall-2026-06-01-8/openwall-2026-06-01-8.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/8>
 
@@ -613,7 +613,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/8>
 
 [![Openwall CVE card](openwall-2026-06-01-9/openwall-2026-06-01-9.png)](https://www.openwall.com/lists/oss-security/2026/06/01/9)
 
-[Links and details (TXT)](openwall-2026-06-01-9/openwall-2026-06-01-9.txt)
+[PoC and References (TXT)](openwall-2026-06-01-9/openwall-2026-06-01-9.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/9>
 
@@ -631,7 +631,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/9>
 
 [![Openwall CVE card](openwall-2026-06-01-10/openwall-2026-06-01-10.png)](https://www.openwall.com/lists/oss-security/2026/06/01/10)
 
-[Links and details (TXT)](openwall-2026-06-01-10/openwall-2026-06-01-10.txt)
+[PoC and References (TXT)](openwall-2026-06-01-10/openwall-2026-06-01-10.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/10>
 
@@ -649,7 +649,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/10>
 
 [![Openwall CVE card](openwall-2026-06-01-11/openwall-2026-06-01-11.png)](https://www.openwall.com/lists/oss-security/2026/06/01/11)
 
-[Links and details (TXT)](openwall-2026-06-01-11/openwall-2026-06-01-11.txt)
+[PoC and References (TXT)](openwall-2026-06-01-11/openwall-2026-06-01-11.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/11>
 
@@ -667,7 +667,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/11>
 
 [![Openwall CVE card](openwall-2026-06-01-12/openwall-2026-06-01-12.png)](https://www.openwall.com/lists/oss-security/2026/06/01/12)
 
-[Links and details (TXT)](openwall-2026-06-01-12/openwall-2026-06-01-12.txt)
+[PoC and References (TXT)](openwall-2026-06-01-12/openwall-2026-06-01-12.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/12>
 
@@ -685,7 +685,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/12>
 
 [![Openwall CVE card](openwall-2026-06-01-13/openwall-2026-06-01-13.png)](https://www.openwall.com/lists/oss-security/2026/06/01/13)
 
-[Links and details (TXT)](openwall-2026-06-01-13/openwall-2026-06-01-13.txt)
+[PoC and References (TXT)](openwall-2026-06-01-13/openwall-2026-06-01-13.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/06/01/13>
 
@@ -703,7 +703,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/01/13>
 
 [![Openwall CVE card](openwall-2026-10-17-2/openwall-2026-10-17-2.png)](https://www.openwall.com/lists/oss-security/2026/10/17/2)
 
-[Links and details (TXT)](openwall-2026-10-17-2/openwall-2026-10-17-2.txt)
+[PoC and References (TXT)](openwall-2026-10-17-2/openwall-2026-10-17-2.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/10/17/2>
 
@@ -721,7 +721,7 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/17/2>
 
 [![Openwall CVE card](openwall-2026-10-17-4/openwall-2026-10-17-4.png)](https://www.openwall.com/lists/oss-security/2026/10/17/4)
 
-[Links and details (TXT)](openwall-2026-10-17-4/openwall-2026-10-17-4.txt)
+[PoC and References (TXT)](openwall-2026-10-17-4/openwall-2026-10-17-4.txt)
 
 Source: <https://www.openwall.com/lists/oss-security/2026/10/17/4>
 

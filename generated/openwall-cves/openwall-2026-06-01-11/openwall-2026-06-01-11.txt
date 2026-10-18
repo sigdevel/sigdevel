@@ -1,15 +1,3 @@
-Source:
-https://www.openwall.com/lists/oss-security/2026/06/01/11
-
-Subject:
-CVE-2025-60485: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_apple_set_tag_ex on crafted MP4 with corrupted esds box
-
-Product:
-GPAC (MP4Box)
-
-Affected:
-gpac/MP4Box prior to fix commit e44a4e2b0d193566619ada71599e70255699da94 (GPAC version 2.5-DEV-rev1687-ge44a4e2b0-master)
-
 PoC:
 https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/52/52_gf_isom_apple_set_tag_ex_isomedia_isom_write_c_6309
 
@@ -17,6 +5,3 @@ References:
 https://github.com/gpac/gpac/issues/3323
 https://nvd.nist.gov/vuln/detail/CVE-2025-60485
 https://www.cve.org/CVERecord?id=CVE-2025-60485
-
-Reporter:
-sigdevel <https://infosec.exchange/@sigdevel>
