@@ -49,5 +49,9 @@
 | [CVE-2025-60495](https://www.openwall.com/lists/oss-security/2026/06/01/13) | [CVE-2025-60495: NULL Pointer Dereference in GPAC/MP4Box via gf_media_get_color_info on crafted MP4 with inconsistent sample entry](https://www.openwall.com/lists/oss-security/2026/06/01/13) |
 | [CVE-2025-55640](https://www.openwall.com/lists/oss-security/2026/10/17/2) | [CVE-2025-55640: Heap Buffer Overflow in GPAC/MP4Box via stbl_AddSize on crafted MP4 with corrupted sample metadata](https://www.openwall.com/lists/oss-security/2026/10/17/2) |
 | [CVE-2025-55653](https://www.openwall.com/lists/oss-security/2026/10/17/4) | [CVE-2025-55653: Divide by Zero in GPAC/MP4Box via gf_parse_lfrac on crafted MP4 with zero-denominator fraction](https://www.openwall.com/lists/oss-security/2026/10/17/4) |
+| [CVE-2025-55654](https://www.openwall.com/lists/oss-security/2026/10/20/7) | [CVE-2025-55654: Use-after-free in GPAC/MP4Box gf_filter_pid_get_packet via crafted NHML export input](https://www.openwall.com/lists/oss-security/2026/10/20/7) |
+| [CVE-2025-55667](https://www.openwall.com/lists/oss-security/2026/10/20/8) | [CVE-2025-55667: NULL pointer dereference in GPAC/MP4Box dump_isom_saps via crafted MP4 input](https://www.openwall.com/lists/oss-security/2026/10/20/8) |
+| [CVE-2025-60480](https://www.openwall.com/lists/oss-security/2026/10/20/9) | [CVE-2025-60480: Heap buffer overflow in GPAC/MP4Box gf_odf_ac4_cfg_alternative_info via crafted AC-4 file](https://www.openwall.com/lists/oss-security/2026/10/20/9) |
+| [CVE-2025-52290](https://www.openwall.com/lists/oss-security/2026/10/20/6) | [CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames](https://www.openwall.com/lists/oss-security/2026/10/20/6)<br>&nbsp; |
 
 </details>
