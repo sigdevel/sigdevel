@@ -143,16 +143,14 @@ def render_png(card: Card, output: Path) -> None:
     image.save(output, format='PNG')
 
 
-def render_index(cards: list[Card]) -> str:
-    lines = ['# Openwall CVE cards', '', 'One card per unique source URL. PNG links are plain text; use the clickable links below.', '']
-    for card in cards:
-        filename = card_filename(card.url)
-        stem = Path(filename).stem
-        lines += [f'## {escape(card.fields["Subject"])}', '', f'[![Openwall CVE card]({stem}/{filename})]({card.url})', '', f'[PoC and References (TXT)]({stem}/{stem}.txt)', '', f'Source: <{card.url}>', '']
-        for name in ('PoC', 'References'):
-            lines += [f'**{name}:**', '']
-            lines += [f'- <{url}>' for url in card.fields[name].splitlines()] or ['Not provided in source.']
-            lines.append('')
+def render_index_entry(card: Card) -> str:
+    filename = card_filename(card.url)
+    stem = Path(filename).stem
+    lines = [f'## {escape(card.fields["Subject"])}', '', f'[![Openwall CVE card]({stem}/{filename})]({card.url})', '', f'[PoC and References (TXT)]({stem}/{stem}.txt)', '', f'Source: <{card.url}>', '']
+    for name in ('PoC', 'References'):
+        lines += [f'**{name}:**', '']
+        lines += [f'- <{url}>' for url in card.fields[name].splitlines()] or ['Not provided in source.']
+        lines.append('')
     return '\n'.join(lines)
 
 
@@ -169,13 +167,35 @@ def main() -> int:
     parser.add_argument('--input', type=Path, default=Path('data/openwall-cve-links.txt'))
     parser.add_argument('--output-dir', type=Path, default=Path('generated/openwall-cves'))
     parser.add_argument('--timeout', type=int, default=20)
+    parser.add_argument('--force', action='store_true', help='Fetch and regenerate existing PNG/TXT pairs too')
     args = parser.parse_args()
+    index_path = args.output_dir / 'README.md'
+    old_index = index_path.read_text(encoding='utf-8') if index_path.is_file() else ''
+    cached_entries = {}
+    for entry in re.split(r'(?=^## )', old_index, flags=re.MULTILINE):
+        source = re.search(r'^Source: <([^>]+)>$', entry, re.MULTILINE)
+        if source:
+            cached_entries[source[1]] = entry.strip()
     cards = []
-    # Fetch and parse everything first: a failed request must fail CI, not publish placeholders.
+    entries = []
+    skipped = 0
+    # Fetch new/incomplete posts first; failures must not publish placeholders.
     for url in load_urls(args.input):
         try:
-            card_filename(url)
-            cards.append(parse_card(fetch_text(url, args.timeout), url))
+            filename = card_filename(url)
+            stem = Path(filename).stem
+            directory = args.output_dir / stem
+            if not args.force and (directory / filename).is_file() and (directory / f'{stem}.txt').is_file():
+                skipped += 1
+                # Preserve the existing title and clickable links without fetching.
+                # If the index was deleted, still link the retained materials.
+                entries.append(cached_entries.get(url) or render_index_entry(Card(url, {
+                    'Subject': stem, 'PoC': '', 'References': '',
+                })).strip())
+                continue
+            card = parse_card(fetch_text(url, args.timeout), url)
+            cards.append(card)
+            entries.append(render_index_entry(card).strip())
         except (OSError, ValueError) as exc:
             print(f'Failed to render {url}: {exc}', file=sys.stderr)
             return 1
@@ -186,11 +206,14 @@ def main() -> int:
         directory = args.output_dir / stem
         render_png(card, directory / filename)
         (directory / f'{stem}.txt').write_text(render_text(card), encoding='utf-8')
-    (args.output_dir / 'README.md').write_text(render_index(cards), encoding='utf-8')
+    index = '# Openwall CVE cards\n\nOne card per unique source URL. PNG links are plain text; use the clickable links below.\n\n'
+    index += '\n\n'.join(entries) + '\n'
+    if index != old_index:
+        index_path.write_text(index, encoding='utf-8')
     # Migrate only the old flat PNGs for posts successfully generated above.
     for card in cards:
         (args.output_dir / card_filename(card.url)).unlink(missing_ok=True)
-    print(f'Generated {len(cards)} PNG cards in {args.output_dir}')
+    print(f'Generated {len(cards)} PNG cards; skipped {skipped} existing pairs in {args.output_dir}')
     return 0
 
 

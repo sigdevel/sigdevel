@@ -35,8 +35,14 @@ provides clickable PoC and reference URLs, and each image links to its source.
 It also links to each TXT file. Existing flat PNGs for successfully generated
 posts are removed after generation; unrelated files are preserved.
 
-Options: `--input PATH`, `--output-dir PATH`, `--timeout SECONDS`.
-HTTPS access to `www.openwall.com` is required. A fetch failure or invalid
+Existing PNG/TXT pairs are skipped without fetching the post or rewriting
+either file. If one file is missing, the pair is generated again. Existing
+index entries are retained; new entries are added for newly generated posts.
+Use `--force` to refresh all posts explicitly, for example after a design change.
+
+Options: `--input PATH`, `--output-dir PATH`, `--timeout SECONDS`, `--force`.
+HTTPS access to `www.openwall.com` is required only for new, incomplete or
+forced posts. A fetch failure or invalid
 message exits unsuccessfully before updating any cards or the index.
 The existing `render_openwall_cves.py` still generates the summary SVG and
 README table independently. GitHub Actions runs both renderers and commits

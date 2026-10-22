@@ -94,15 +94,43 @@ class RendererTests(unittest.TestCase):
                 image.verify()
             self.assertIn('<https://nvd.nist.gov/vuln/detail/CVE-2023-0645>', (p / 'cards/README.md').read_text())
             self.assertIn('(openwall-2026-06-29-3/openwall-2026-06-29-3.txt)', (p / 'cards/README.md').read_text())
+            before = {file: (file.read_bytes(), file.stat().st_mtime_ns) for file in (p / 'cards').rglob('*') if file.is_file()}
+            with patch.object(sys, 'argv', args), patch.object(renderer, 'fetch_text') as fetch, patch.object(renderer, 'render_png') as render:
+                self.assertEqual(renderer.main(), 0)
+                fetch.assert_not_called()
+                render.assert_not_called()
+            self.assertEqual(before, {file: (file.read_bytes(), file.stat().st_mtime_ns) for file in before})
             # An upgrade removes its old flat image, preserving unrelated files.
             legacy = p / 'cards' / pngs[0].name
             legacy.write_bytes(b'old image')
             unrelated = p / 'cards/custom.png'
             unrelated.write_bytes(b'user image')
-            with patch.object(sys, 'argv', args), patch.object(renderer, 'fetch_text', return_value=PAGE):
+            with patch.object(sys, 'argv', args + ['--force']), patch.object(renderer, 'fetch_text', return_value=PAGE) as fetch:
                 self.assertEqual(renderer.main(), 0)
+                fetch.assert_called_once()
             self.assertFalse(legacy.exists())
             self.assertEqual(unrelated.read_bytes(), b'user image')
+
+    def test_new_and_incomplete_pairs_are_generated(self):
+        with tempfile.TemporaryDirectory() as td:
+            p = Path(td)
+            second = URL[:-1] + '4'
+            (p / 'links.txt').write_text(URL)
+            args = ['renderer', '--input', str(p / 'links.txt'), '--output-dir', str(p / 'cards')]
+            with patch.object(sys, 'argv', args), patch.object(renderer, 'fetch_text', return_value=PAGE):
+                self.assertEqual(renderer.main(), 0)
+            first_png = next((p / 'cards').glob('*/*.png'))
+            before = (first_png.read_bytes(), first_png.stat().st_mtime_ns)
+            (p / 'links.txt').write_text(URL + '\n' + second)
+            for incomplete in (False, True):
+                if incomplete:
+                    next((p / 'cards/openwall-2026-06-29-4').glob('*.txt')).unlink()
+                with patch.object(sys, 'argv', args), patch.object(renderer, 'fetch_text', return_value=PAGE) as fetch:
+                    self.assertEqual(renderer.main(), 0)
+                    fetch.assert_called_once_with(second, 20)
+                self.assertEqual(before, (first_png.read_bytes(), first_png.stat().st_mtime_ns))
+                self.assertEqual(len(list((p / 'cards').glob('*/*.txt'))), 2)
+                self.assertEqual((p / 'cards/README.md').read_text().count('## '), 2)
 
     def test_failure_keeps_existing_outputs(self):
         with tempfile.TemporaryDirectory() as td:
