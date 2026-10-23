@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/50/50_gf_odf_ac4_cfg_dsi_v1_odf_descriptors_c_2179
+
+References:
+https://github.com/gpac/gpac/issues/3303
+https://nvd.nist.gov/vuln/detail/CVE-2025-71438
+https://github.com/gpac/gpac/releases/tag/v26.07.0
+https://infosec.exchange/@sigdevel/117484156995584313
+https://github.com/gpac/gpac/commit/13eb5b76560aaf7813b865a2ad433258478e2695

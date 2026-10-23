@@ -1,0 +1,10 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/47/47_gf_filter_packet_destroy_filter_core_filter_pck_c_678
+
+References:
+https://github.com/gpac/gpac/issues/3300
+https://github.com/gpac/gpac/commit/c592a144bbe339ee581ca88aaa3247362795b742
+https://www.cve.org/CVERecord?id=CVE-2025-60478
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60478.json
+https://infosec.exchange/@sigdevel/117456560052551246
+https://bdu.fstec.ru/vul/2025-09883
