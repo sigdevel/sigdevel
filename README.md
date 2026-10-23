@@ -58,6 +58,13 @@
 | [CVE-2025-60478](https://www.openwall.com/lists/oss-security/2026/10/22/23) | [CVE-2025-60478: Heap use-after-free in GPAC/MP4Box packet destruction via crafted MPEG-2 TS file](https://www.openwall.com/lists/oss-security/2026/10/22/23) |
 | [CVE-2025-60476](https://www.openwall.com/lists/oss-security/2026/10/22/22) | [CVE-2025-60476: Heap use-after-free in GPAC/MP4Box AC-4 descriptor cleanup](https://www.openwall.com/lists/oss-security/2026/10/22/22)<br>&nbsp; |
 | [CVE-2025-60469](https://www.openwall.com/lists/oss-security/2026/10/22/21) | [CVE-2025-60469: NULL pointer dereference in GPAC/MP4Box AC-4 parser via crafted file](https://www.openwall.com/lists/oss-security/2026/10/22/21)<br>&nbsp; |
+| [CVE-2025-60497](https://www.openwall.com/lists/oss-security/2026/10/23/19) | [CVE-2025-60497: NULL pointer dereference in GPAC/MP4Box GetESD via crafted MP4 input](https://www.openwall.com/lists/oss-security/2026/10/23/19)<br>&nbsp; |
+| [CVE-2025-60494](https://www.openwall.com/lists/oss-security/2026/10/23/18) | [CVE-2025-60494: invalid memory read in GPAC/MP4Box gf_props_equal_internal via crafted MP4 input](https://www.openwall.com/lists/oss-security/2026/10/23/18) |
+| [CVE-2025-60492](https://www.openwall.com/lists/oss-security/2026/10/23/17) | [CVE-2025-60492: uncontrolled recursion in GPAC/MP4Box BIFS decoder via crafted MP4 input](https://www.openwall.com/lists/oss-security/2026/10/23/17)<br>&nbsp; |
+| [CVE-2025-60491](https://www.openwall.com/lists/oss-security/2026/10/23/16) | [CVE-2025-60491: heap use-after-free in GPAC/MP4Box dasher_flush_segment via crafted MPEG-2 TS input](https://www.openwall.com/lists/oss-security/2026/10/23/16) |
+| [CVE-2025-60490](https://www.openwall.com/lists/oss-security/2026/10/23/15) | [CVE-2025-60490: heap use-after-free in GPAC/MP4Box gf_filter_pid_send_event_downstream via crafted MPEG-2 TS input](https://www.openwall.com/lists/oss-security/2026/10/23/15) |
+| [CVE-2025-60489](https://www.openwall.com/lists/oss-security/2026/10/23/14) | [CVE-2025-60489: NULL pointer dereference in GPAC/MP4Box dasher_insert_timeline_entry via crafted MP4 input](https://www.openwall.com/lists/oss-security/2026/10/23/14) |
+| [CVE-2025-60487](https://www.openwall.com/lists/oss-security/2026/10/23/13) | [CVE-2025-60487: NULL pointer dereference in GPAC/MP4Box gf_isom_get_esd via crafted XML input](https://www.openwall.com/lists/oss-security/2026/10/23/13) |
 | [CVE-2025-52290](https://www.openwall.com/lists/oss-security/2026/10/20/6) | [CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames](https://www.openwall.com/lists/oss-security/2026/10/20/6)<br>&nbsp; |
 
 </details>

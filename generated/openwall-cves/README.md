@@ -919,6 +919,148 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/22/21>
 - <https://infosec.exchange/@sigdevel/117456377012352192>
 - <https://bdu.fstec.ru/vul/2025-08611>
 
+## CVE-2025-60497: NULL pointer dereference in GPAC/MP4Box GetESD via crafted MP4 input
+
+[![Openwall CVE card](openwall-2026-10-23-19/openwall-2026-10-23-19.png)](https://www.openwall.com/lists/oss-security/2026/10/23/19)
+
+[PoC and References (TXT)](openwall-2026-10-23-19/openwall-2026-10-23-19.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/23/19>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/62/62_GetESD_isomedia_track_c_107>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3336>
+- <https://github.com/gpac/gpac/commit/91083fcfce01aa596a13a6962768d13a60bfc8bb>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60497>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60497.json>
+- <https://infosec.exchange/@sigdevel/117451504006040011>
+
+## CVE-2025-60494: invalid memory read in GPAC/MP4Box gf_props_equal_internal via crafted MP4 input
+
+[![Openwall CVE card](openwall-2026-10-23-18/openwall-2026-10-23-18.png)](https://www.openwall.com/lists/oss-security/2026/10/23/18)
+
+[PoC and References (TXT)](openwall-2026-10-23-18/openwall-2026-10-23-18.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/23/18>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/64/64_gf_props_equal_internal_filter_core_filter_props_c_867>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3329>
+- <https://github.com/gpac/gpac/commit/fcb9083292befe61d3e2466b18edfedba49da098>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60494>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60494.json>
+- <https://infosec.exchange/@sigdevel/117451480059519560>
+
+## CVE-2025-60492: uncontrolled recursion in GPAC/MP4Box BIFS decoder via crafted MP4 input
+
+[![Openwall CVE card](openwall-2026-10-23-17/openwall-2026-10-23-17.png)](https://www.openwall.com/lists/oss-security/2026/10/23/17)
+
+[PoC and References (TXT)](openwall-2026-10-23-17/openwall-2026-10-23-17.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/23/17>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/59/59_Anchor_Create_scenegraph_mpeg4_nodes_c_171>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3324>
+- <https://github.com/gpac/gpac/commit/8e7b9a3a04331286b89d1803c65a2d6edc11b4c4>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60492>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60492.json>
+- <https://infosec.exchange/@sigdevel/117456655329648201>
+
+## CVE-2025-60491: heap use-after-free in GPAC/MP4Box dasher_flush_segment via crafted MPEG-2 TS input
+
+[![Openwall CVE card](openwall-2026-10-23-16/openwall-2026-10-23-16.png)](https://www.openwall.com/lists/oss-security/2026/10/23/16)
+
+[PoC and References (TXT)](openwall-2026-10-23-16/openwall-2026-10-23-16.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/23/16>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/61/61_dasher_flush_segment_filters_dasher_c_8062>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3326>
+- <https://github.com/gpac/gpac/commit/f6128214feb69cd689e4b9944a2621bc4ad8faf0>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60491>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60491.json>
+- <https://infosec.exchange/@sigdevel/117451513352278768>
+
+## CVE-2025-60490: heap use-after-free in GPAC/MP4Box gf_filter_pid_send_event_downstream via crafted MPEG-2 TS input
+
+[![Openwall CVE card](openwall-2026-10-23-15/openwall-2026-10-23-15.png)](https://www.openwall.com/lists/oss-security/2026/10/23/15)
+
+[PoC and References (TXT)](openwall-2026-10-23-15/openwall-2026-10-23-15.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/23/15>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/54/54_gf_filter_pid_send_event_downstream_filter_core_filter_pid_c_7919>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3315>
+- <https://github.com/gpac/gpac/commit/d0793f92e04fe284a25c2a9335cc5edc68deb6d4>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60490>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60490.json>
+- <https://infosec.exchange/@sigdevel/117456620287496398>
+- <https://bdu.fstec.ru/vul/2025-13150>
+
+## CVE-2025-60489: NULL pointer dereference in GPAC/MP4Box dasher_insert_timeline_entry via crafted MP4 input
+
+[![Openwall CVE card](openwall-2026-10-23-14/openwall-2026-10-23-14.png)](https://www.openwall.com/lists/oss-security/2026/10/23/14)
+
+[PoC and References (TXT)](openwall-2026-10-23-14/openwall-2026-10-23-14.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/23/14>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/60/60_dasher_insert_timeline_entry_filters_dasher_c_7760>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3325>
+- <https://github.com/gpac/gpac/commit/4860a1a6f128ccc9ae37b4b738d22029f9672457>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60489>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60489.json>
+- <https://infosec.exchange/@sigdevel/117451521960820132>
+
+## CVE-2025-60487: NULL pointer dereference in GPAC/MP4Box gf_isom_get_esd via crafted XML input
+
+[![Openwall CVE card](openwall-2026-10-23-13/openwall-2026-10-23-13.png)](https://www.openwall.com/lists/oss-security/2026/10/23/13)
+
+[PoC and References (TXT)](openwall-2026-10-23-13/openwall-2026-10-23-13.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/23/13>
+
+**PoC:**
+
+Not provided in source.
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3320>
+- <https://github.com/gpac/gpac/commit/e6d01820d7bf3967d931fedb379ee5f209bc133b>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60487>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60487.json>
+- <https://infosec.exchange/@sigdevel/117456633862790827>
+- <https://bdu.fstec.ru/vul/2025-13151>
+
 ## CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames
 
 [![Openwall CVE card](openwall-2026-10-20-6/openwall-2026-10-20-6.png)](https://www.openwall.com/lists/oss-security/2026/10/20/6)

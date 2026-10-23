@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/59/59_Anchor_Create_scenegraph_mpeg4_nodes_c_171
+
+References:
+https://github.com/gpac/gpac/issues/3324
+https://github.com/gpac/gpac/commit/8e7b9a3a04331286b89d1803c65a2d6edc11b4c4
+https://www.cve.org/CVERecord?id=CVE-2025-60492
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60492.json
+https://infosec.exchange/@sigdevel/117456655329648201
