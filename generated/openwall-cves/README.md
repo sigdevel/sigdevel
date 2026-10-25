@@ -1061,6 +1061,26 @@ Not provided in source.
 - <https://infosec.exchange/@sigdevel/117456633862790827>
 - <https://bdu.fstec.ru/vul/2025-13151>
 
+## CVE-2025-60493: GPAC/MP4Box: NULL Pointer Dereference in check_media_profile via Crafted MP4 Input
+
+[![Openwall CVE card](openwall-2026-10-24-10/openwall-2026-10-24-10.png)](https://www.openwall.com/lists/oss-security/2026/10/24/10)
+
+[PoC and References (TXT)](openwall-2026-10-24-10/openwall-2026-10-24-10.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/24/10>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/63/63_check_media_profile_applications_mp4box_mp4box_c_3883>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3328>
+- <https://github.com/gpac/gpac/commit/9afeea23f5c6584c02aefe1e1560c2844dfb8f7e>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60493>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60493.json>
+- <https://infosec.exchange/@sigdevel/117451489672249554>
+
 ## CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames
 
 [![Openwall CVE card](openwall-2026-10-20-6/openwall-2026-10-20-6.png)](https://www.openwall.com/lists/oss-security/2026/10/20/6)
