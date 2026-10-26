@@ -1081,6 +1081,24 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/24/10>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60493.json>
 - <https://infosec.exchange/@sigdevel/117451489672249554>
 
+## CVE-2025-60477: GPAC/MP4Box: NULL Pointer Dereference in gf_filter_pid_resolve_file_template_ex on crafted MP4 with special metadata
+
+[![Openwall CVE card](openwall-2026-10-26-1/openwall-2026-10-26-1.png)](https://www.openwall.com/lists/oss-security/2026/10/26/1)
+
+[PoC and References (TXT)](openwall-2026-10-26-1/openwall-2026-10-26-1.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/26/1>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/48/48_gf_filter_pid_resolve_file_template_ex_filter_core_filter_pid_c_9045>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3301>
+- <https://nvd.nist.gov/vuln/detail/CVE-2025-60477>
+- <https://infosec.exchange/@sigdevel/116658486442433074>
+
 ## CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames
 
 [![Openwall CVE card](openwall-2026-10-20-6/openwall-2026-10-20-6.png)](https://www.openwall.com/lists/oss-security/2026/10/20/6)
