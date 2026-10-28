@@ -1099,6 +1099,25 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/26/1>
 - <https://nvd.nist.gov/vuln/detail/CVE-2025-60477>
 - <https://infosec.exchange/@sigdevel/116658486442433074>
 
+## CVE-2025-60475: GPAC/MP4Box: Global Buffer Overflow Read in gf_ac4_parser_bs on crafted AC-4 stream
+
+[![Openwall CVE card](openwall-2026-10-28-2/openwall-2026-10-28-2.png)](https://www.openwall.com/lists/oss-security/2026/10/28/2)
+
+[PoC and References (TXT)](openwall-2026-10-28-2/openwall-2026-10-28-2.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/28/2>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/40/40_gf_ac4_parser_bs_media_tools_av_parsers_c_16140>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3291>
+- <https://github.com/gpac/gpac/commit/e02d1fd24cdc26acb1b236ab38b3832cffcae21b>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60475>
+- <https://infosec.exchange/@sigdevel/117456354623831878>
+
 ## CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames
 
 [![Openwall CVE card](openwall-2026-10-20-6/openwall-2026-10-20-6.png)](https://www.openwall.com/lists/oss-security/2026/10/20/6)
