@@ -1118,6 +1118,25 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/28/2>
 - <https://www.cve.org/CVERecord?id=CVE-2025-60475>
 - <https://infosec.exchange/@sigdevel/117456354623831878>
 
+## CVE-2025-60482: GPAC/MP4Box: Heap Use-After-Free in AC-4 Descriptor Cleanup
+
+[![Openwall CVE card](openwall-2026-10-29-3/openwall-2026-10-29-3.png)](https://www.openwall.com/lists/oss-security/2026/10/29/3)
+
+[PoC and References (TXT)](openwall-2026-10-29-3/openwall-2026-10-29-3.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/29/3>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/46/46_gf_odf_ac4_cfg_clean_list_odf_descriptors_c_2411>
+
+**References:**
+
+- <https://www.cve.org/CVERecord?id=CVE-2025-60482>
+- <https://github.com/gpac/gpac/issues/3297>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60482.json>
+- <https://infosec.exchange/@sigdevel/117456522954593448>
+
 ## CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames
 
 [![Openwall CVE card](openwall-2026-10-20-6/openwall-2026-10-20-6.png)](https://www.openwall.com/lists/oss-security/2026/10/20/6)
