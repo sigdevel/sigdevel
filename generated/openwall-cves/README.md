@@ -1137,6 +1137,25 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/29/3>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60482.json>
 - <https://infosec.exchange/@sigdevel/117456522954593448>
 
+## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
+
+[![Openwall CVE card](openwall-2026-10-30-8/openwall-2026-10-30-8.png)](https://www.openwall.com/lists/oss-security/2026/10/30/8)
+
+[PoC and References (TXT)](openwall-2026-10-30-8/openwall-2026-10-30-8.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/10/30/8>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/dhcpcd/1/if-options_c_1886/if-options_c_1886>
+
+**References:**
+
+- <https://www.cve.org/CVERecord?id=CVE-2025-70102>
+- <https://github.com/NetworkConfiguration/dhcpcd/issues/567>
+- <https://github.com/sigdevel/pocs/blob/main/res/dhcpcd/1/if-options_c_1886/if-options_c_1886>
+- <https://github.com/NetworkConfiguration/dhcpcd/commit/117742d755b591764036dd4218f314f748a3d2b7>
+
 ## CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames
 
 [![Openwall CVE card](openwall-2026-10-20-6/openwall-2026-10-20-6.png)](https://www.openwall.com/lists/oss-security/2026/10/20/6)
