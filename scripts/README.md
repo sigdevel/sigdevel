@@ -63,3 +63,7 @@ fetching NVD and reads the issue title from GitHub. It removes a leading
 the title with `CVE-…:` unless already present. The CVE cell links to NVD;
 the description links to the issue. Duplicate pairs are ignored. These pairs
 are excluded from the Openwall PNG renderer.
+
+A standalone NVD URL that duplicates an explicit NVD/issue pair is ignored,
+regardless of line order. A standalone NVD URL without a pair is an input
+error: add its GitHub issue URL on the same line.

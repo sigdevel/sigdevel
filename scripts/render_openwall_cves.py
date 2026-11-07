@@ -32,6 +32,7 @@ def load_sources(path: Path) -> list[tuple[str, str | None]]:
     """Read Openwall URLs or NVD/issue URL pairs (plain or Markdown)."""
     sources = []
     seen = set()
+    standalone_nvd = []
     for number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         line = raw.split("#", 1)[0].strip()
         if not line:
@@ -45,6 +46,9 @@ def load_sources(path: Path) -> list[tuple[str, str | None]]:
                 raise ValueError(f"Invalid NVD URL on line {number}")
             issues = [url for url in urls[1:] if urlsplit(url).hostname == "github.com"
                       and re.fullmatch(r"/[^/]+/[^/]+/issues/\d+/?", urlsplit(url).path)]
+            if len(urls) == 1:
+                standalone_nvd.append((number, urls[0]))
+                continue
             if len(issues) != 1:
                 raise ValueError(f"Expected one GitHub issue URL on line {number}")
             source = (urls[0], issues[0])
@@ -53,6 +57,12 @@ def load_sources(path: Path) -> list[tuple[str, str | None]]:
         if source not in seen:
             sources.append(source)
             seen.add(source)
+    paired_nvd = {url.lower().rstrip("/") for url, issue in sources if issue}
+    for number, url in standalone_nvd:
+        if url.lower().rstrip("/") not in paired_nvd:
+            raise ValueError(
+                f"NVD URL on line {number} requires a GitHub issue URL on the same line"
+            )
     return sources
 
 

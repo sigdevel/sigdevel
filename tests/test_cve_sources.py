@@ -23,6 +23,15 @@ class SourceTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 r.load_sources(p)
 
+    def test_standalone_nvd_duplicate_uses_explicit_pair(self):
+        with tempfile.TemporaryDirectory() as td:
+            p = Path(td) / 'links'
+            for lines in (f'{NVD}\n{NVD} {ISSUE}\n',
+                          f'{NVD} {ISSUE}\n{NVD.upper().replace("HTTPS", "https")}\n'):
+                p.write_text(lines)
+                self.assertEqual(r.load_sources(p), [(NVD, ISSUE)])
+                self.assertEqual(r.load_urls(p), [])
+
     def test_issue_title_and_link_destinations(self):
         page = f'<meta property="og:title" content="[security] {TITLE} · Issue #4030 · gpac/gpac">'
         with patch.object(r, 'fetch_text', return_value=page) as fetch:
