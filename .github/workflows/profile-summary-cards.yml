@@ -22,7 +22,7 @@ jobs:
         with:
           USERNAME: ${{ github.repository_owner }}
           AUTO_PUSH: false
-      - name: Render Openwall CVE watch card
+      - name: Render CVE watch card
         run: python3 scripts/render_openwall_cves.py
       - uses: actions/setup-python@v5
         with:
@@ -33,7 +33,7 @@ jobs:
         run: python3 -m unittest discover -s tests
       - name: Render individual Openwall PNG cards
         run: python3 scripts/render_openwall_pngs.py
-      - name: Commit Openwall CVE watch card
+      - name: Commit CVE watch card
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
