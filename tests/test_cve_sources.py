@@ -37,10 +37,10 @@ class SourceTests(unittest.TestCase):
         with patch.object(r, 'fetch_text', return_value=page) as fetch:
             posts = r.collect_posts([(NVD, ISSUE)], 20)
             fetch.assert_called_once_with(ISSUE, 20)
-        self.assertEqual(posts[0].subject, f'CVE-2026-124031: {TITLE}')
+        self.assertEqual(posts[0].subject, f'CVE-2026-124031: gpac/gpac {TITLE}')
         table = r.render_markdown_table(posts)
         self.assertIn(f'[CVE-2026-124031]({NVD})', table)
-        self.assertIn(f'[CVE-2026-124031: {TITLE}]({ISSUE})', table)
+        self.assertIn(f'[CVE-2026-124031: gpac/gpac {TITLE}]({ISSUE})', table)
         self.assertNotIn('[security]', table)
 
     def test_title_fallback_and_existing_cve(self):
@@ -48,7 +48,13 @@ class SourceTests(unittest.TestCase):
         page = f'<title>[SECURITY] {title} · Issue #4030 · gpac/gpac · GitHub</title>'
         with patch.object(r, 'fetch_text', return_value=page):
             post = r.collect_posts([(NVD, ISSUE)], 20)[0]
-        self.assertEqual(post.subject, 'CVE-2026-124031: sample & example')
+        self.assertEqual(post.subject, 'CVE-2026-124031: gpac/gpac sample & example')
+
+    def test_repository_comes_from_issue_url(self):
+        issue = 'https://github.com/another/vendor/issues/42'
+        with patch.object(r, 'fetch_text', return_value='<title>[security] example</title>'):
+            post = r.collect_posts([(NVD, issue)], 20)[0]
+        self.assertEqual(post.subject, 'CVE-2026-124031: another/vendor example')
 
     def test_openwall_compatibility(self):
         with patch.object(r, 'fetch_text', return_value='Subject: CVE-2026-1234: old post\n\n'):

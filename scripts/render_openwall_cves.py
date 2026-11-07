@@ -149,8 +149,11 @@ def collect_posts(urls: list[str | tuple[str, str | None]], timeout: int) -> lis
             if issue:
                 subject = extract_issue_subject(fetch_text(issue, timeout))
                 cves = extract_cves(urlsplit(url).path)
-                if not subject.upper().startswith(cves[0]):
-                    subject = f"{cves[0]}: {subject}"
+                subject = re.sub(
+                    rf"^{re.escape(cves[0])}\b\s*:?\s*", "", subject, flags=re.I
+                )
+                repository = "/".join(urlsplit(issue).path.strip("/").split("/")[:2])
+                subject = f"{cves[0]}: {repository} {subject}"
                 posts.append(CvePost(url=issue, subject=subject, cves=cves, cve_url=url))
                 continue
             page_text = fetch_text(url, timeout)

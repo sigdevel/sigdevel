@@ -60,7 +60,8 @@ https://nvd.nist.gov/vuln/detail/cve-2026-124031 https://github.com/gpac/gpac/is
 `render_openwall_cves.py` takes the CVE identifier from the NVD URL without
 fetching NVD and reads the issue title from GitHub. It removes a leading
 `[security]` (case insensitive), removes GitHub's title suffix, and prefixes
-the title with `CVE-…:` unless already present. The CVE cell links to NVD;
+the title with `CVE-…: owner/repository`, using the repository from the issue
+URL. An existing leading CVE identifier is not repeated. The CVE cell links to NVD;
 the description links to the issue. Duplicate pairs are ignored. These pairs
 are excluded from the Openwall PNG renderer.
 
