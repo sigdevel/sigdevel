@@ -11,6 +11,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+from urllib.parse import urlsplit
+from html.parser import HTMLParser
 
 SUBJECT_RE = re.compile(r"Subject:\s*(.+?)(?:\n\s*\n|\r?\n(?:Date|From|To|Message-ID):|$)", re.IGNORECASE | re.DOTALL)
 CVE_RE = re.compile(r"CVE-\d{4}-\d{4,7}", re.IGNORECASE)
@@ -23,18 +25,64 @@ class CvePost:
     url: str
     subject: str
     cves: tuple[str, ...]
+    cve_url: str | None = None
+
+
+def load_sources(path: Path) -> list[tuple[str, str | None]]:
+    """Read Openwall URLs or NVD/issue URL pairs (plain or Markdown)."""
+    sources = []
+    seen = set()
+    for number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        line = raw.split("#", 1)[0].strip()
+        if not line:
+            continue
+        urls = list(dict.fromkeys(re.findall(r'https?://[^\s<>\]\)\\]+', line)))
+        if not urls:
+            continue
+        first = urlsplit(urls[0])
+        if first.hostname == "nvd.nist.gov":
+            if not re.fullmatch(r"/vuln/detail/CVE-\d{4}-\d{4,7}/?", first.path, re.I):
+                raise ValueError(f"Invalid NVD URL on line {number}")
+            issues = [url for url in urls[1:] if urlsplit(url).hostname == "github.com"
+                      and re.fullmatch(r"/[^/]+/[^/]+/issues/\d+/?", urlsplit(url).path)]
+            if len(issues) != 1:
+                raise ValueError(f"Expected one GitHub issue URL on line {number}")
+            source = (urls[0], issues[0])
+        else:
+            source = (urls[0], None)
+        if source not in seen:
+            sources.append(source)
+            seen.add(source)
+    return sources
 
 
 def load_urls(path: Path) -> list[str]:
-    urls: list[str] = []
-    seen: set[str] = set()
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.split("#", 1)[0].strip()
-        if not line or not line.startswith(("http://", "https://")) or line in seen:
-            continue
-        seen.add(line)
-        urls.append(line)
-    return urls
+    # PNG cards still consume Openwall messages only.
+    return [url for url, issue in load_sources(path) if issue is None]
+
+
+class IssueTitleParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.title = None
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "meta" and attrs.get("property") == "og:title":
+            self.title = attrs.get("content")
+
+
+def extract_issue_subject(page: str) -> str:
+    parser = IssueTitleParser()
+    parser.feed(page)
+    title = parser.title
+    if not title:
+        match = re.search(r"<title>(.*?)</title>", page, re.I | re.S)
+        if not match:
+            raise ValueError("GitHub issue title unavailable")
+        title = html.unescape(match[1])
+    title = re.split(r"\s+·\s+Issue #\d+", title)[0]
+    return re.sub(r"^\[security\]\s*", "", WS_RE.sub(" ", title).strip(), flags=re.I)
 
 
 def fetch_text(url: str, timeout: int) -> str:
@@ -82,16 +130,24 @@ def shorten(text: str, max_len: int) -> str:
     return text[: max_len - 1].rstrip() + "…"
 
 
-def collect_posts(urls: list[str], timeout: int) -> list[CvePost]:
+def collect_posts(urls: list[str | tuple[str, str | None]], timeout: int) -> list[CvePost]:
     posts: list[CvePost] = []
     failures: list[str] = []
-    for url in urls:
+    for source in urls:
+        url, issue = source if isinstance(source, tuple) else (source, None)
         try:
+            if issue:
+                subject = extract_issue_subject(fetch_text(issue, timeout))
+                cves = extract_cves(urlsplit(url).path)
+                if not subject.upper().startswith(cves[0]):
+                    subject = f"{cves[0]}: {subject}"
+                posts.append(CvePost(url=issue, subject=subject, cves=cves, cve_url=url))
+                continue
             page_text = fetch_text(url, timeout)
             subject = extract_subject(page_text)
             cves = extract_cves(subject)
             posts.append(CvePost(url=url, subject=subject, cves=cves))
-        except (HTTPError, URLError, TimeoutError, OSError) as exc:
+        except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             failures.append(f"{url}: {exc}")
             posts.append(CvePost(url=url, subject="Subject unavailable", cves=()))
 
@@ -122,7 +178,7 @@ def render_markdown_table(posts: list[CvePost]) -> str:
             if cve == "—":
                 cve_cell = cve
             else:
-                cve_cell = f"[{cve}]({post.url})"
+                cve_cell = f"[{cve}]({post.cve_url or post.url})"
             description_cell = with_minimum_cell_height(f"[{subject}]({post.url})", subject)
             rows.append(f"| {cve_cell} | {description_cell} |")
     return "\n".join(rows) + "\n"
@@ -167,7 +223,7 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=20)
     args = parser.parse_args()
 
-    urls = load_urls(args.input)
+    urls = load_sources(args.input)
     posts = collect_posts(urls, args.timeout)
     render_svg(posts, args.output)
     update_readme_table(args.readme, posts)

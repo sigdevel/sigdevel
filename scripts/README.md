@@ -47,3 +47,19 @@ message exits unsuccessfully before updating any cards or the index.
 The existing `render_openwall_cves.py` still generates the summary SVG and
 README table independently. GitHub Actions runs both renderers and commits
 the generated output.
+
+## NVD and GitHub issues in the CVE list
+
+In `data/openwall-cve-links.txt`, put an NVD URL and a GitHub issue URL on
+one line, separated by whitespace (Markdown links are also accepted):
+
+```text
+https://nvd.nist.gov/vuln/detail/cve-2026-124031 https://github.com/gpac/gpac/issues/4030
+```
+
+`render_openwall_cves.py` takes the CVE identifier from the NVD URL without
+fetching NVD and reads the issue title from GitHub. It removes a leading
+`[security]` (case insensitive), removes GitHub's title suffix, and prefixes
+the title with `CVE-…:` unless already present. The CVE cell links to NVD;
+the description links to the issue. Duplicate pairs are ignored. These pairs
+are excluded from the Openwall PNG renderer.
