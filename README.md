@@ -71,6 +71,6 @@
 | [CVE-2025-60482](https://www.openwall.com/lists/oss-security/2026/10/29/3) | [CVE-2025-60482: GPAC/MP4Box: Heap Use-After-Free in AC-4 Descriptor Cleanup](https://www.openwall.com/lists/oss-security/2026/10/29/3)<br>&nbsp; |
 | [CVE-2025-70102](https://www.openwall.com/lists/oss-security/2026/10/30/8) | [CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing](https://www.openwall.com/lists/oss-security/2026/10/30/8)<br>&nbsp; |
 | [CVE-2025-52290](https://www.openwall.com/lists/oss-security/2026/10/20/6) | [CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames](https://www.openwall.com/lists/oss-security/2026/10/20/6)<br>&nbsp; |
-| [CVE-2026-124031](https://nvd.nist.gov/vuln/detail/cve-2026-124031) | [CVE-2026-124031: gpac/gpac compositor/texturing.c:370 NULL Pointer Dereference in gf_node_get_tag](https://github.com/gpac/gpac/issues/4030) |
+| [CVE-2026-124031](https://nvd.nist.gov/vuln/detail/cve-2026-124031) | [CVE-2026-124031: GPAC/MP4Box compositor/texturing.c:370 NULL Pointer Dereference in gf_node_get_tag](https://github.com/gpac/gpac/issues/4030) |
 
 </details>

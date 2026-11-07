@@ -18,6 +18,7 @@ SUBJECT_RE = re.compile(r"Subject:\s*(.+?)(?:\n\s*\n|\r?\n(?:Date|From|To|Messag
 CVE_RE = re.compile(r"CVE-\d{4}-\d{4,7}", re.IGNORECASE)
 TAG_RE = re.compile(r"<[^>]+>")
 WS_RE = re.compile(r"\s+")
+REPOSITORY_ALIASES = {"gpac/gpac": "GPAC/MP4Box"}
 
 
 @dataclass(frozen=True)
@@ -153,6 +154,7 @@ def collect_posts(urls: list[str | tuple[str, str | None]], timeout: int) -> lis
                     rf"^{re.escape(cves[0])}\b\s*:?\s*", "", subject, flags=re.I
                 )
                 repository = "/".join(urlsplit(issue).path.strip("/").split("/")[:2])
+                repository = REPOSITORY_ALIASES.get(repository.lower(), repository)
                 subject = f"{cves[0]}: {repository} {subject}"
                 posts.append(CvePost(url=issue, subject=subject, cves=cves, cve_url=url))
                 continue
