@@ -9,7 +9,6 @@
 
 | CVE | Description |
 | --- | --- |
-| [CVE-2026-124031](https://nvd.nist.gov/vuln/detail/cve-2026-124031) | [CVE-2026-124031: compositor/texturing.c:370 NULL Pointer Dereference in gf_node_get_tag](https://github.com/gpac/gpac/issues/4030)<br>&nbsp; |
 | [CVE-2023-0645](https://www.openwall.com/lists/oss-security/2026/06/29/3) | [CVE-2023-0645: libjxl/cjxl out-of-bounds read in EXIF metadata parsing](https://www.openwall.com/lists/oss-security/2026/06/29/3)<br>&nbsp; |
 | [CVE-2025-70103](https://www.openwall.com/lists/oss-security/2026/05/30/7) | [CVE-2025-70103: Heap-based Buffer Overflow in libjxl/cjxl via jxl::extras::DecodeImagePNM on crafted PBM file](https://www.openwall.com/lists/oss-security/2026/05/30/7) |
 | [CVE-2025-70099](https://www.openwall.com/lists/oss-security/2026/06/29/4) | [CVE-2025-70099: lwext4 NULL pointer dereference in ext4_dir_en_get_name_len](https://www.openwall.com/lists/oss-security/2026/06/29/4)<br>&nbsp; |
@@ -72,5 +71,6 @@
 | [CVE-2025-60482](https://www.openwall.com/lists/oss-security/2026/10/29/3) | [CVE-2025-60482: GPAC/MP4Box: Heap Use-After-Free in AC-4 Descriptor Cleanup](https://www.openwall.com/lists/oss-security/2026/10/29/3)<br>&nbsp; |
 | [CVE-2025-70102](https://www.openwall.com/lists/oss-security/2026/10/30/8) | [CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing](https://www.openwall.com/lists/oss-security/2026/10/30/8)<br>&nbsp; |
 | [CVE-2025-52290](https://www.openwall.com/lists/oss-security/2026/10/20/6) | [CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames](https://www.openwall.com/lists/oss-security/2026/10/20/6)<br>&nbsp; |
+| [CVE-2026-124031](https://nvd.nist.gov/vuln/detail/cve-2026-124031) | [CVE-2026-124031: compositor/texturing.c:370 NULL Pointer Dereference in gf_node_get_tag](https://github.com/gpac/gpac/issues/4030)<br>&nbsp; |
 
 </details>
