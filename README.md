@@ -73,5 +73,11 @@
 | [CVE-2025-52290](https://www.openwall.com/lists/oss-security/2026/10/20/6) | [CVE-2025-52290: FFmpeg NULL pointer dereference in avpriv_h264_has_num_reorder_frames](https://www.openwall.com/lists/oss-security/2026/10/20/6)<br>&nbsp; |
 | [CVE-2026-124030](https://nvd.nist.gov/vuln/detail/cve-2026-124030) | [CVE-2026-124030: GPAC/MP4Box scenegraph/commands.c:346 NULL Pointer Dereference in gf_sg_command_apply](https://github.com/gpac/gpac/issues/4032) |
 | [CVE-2026-124031](https://nvd.nist.gov/vuln/detail/cve-2026-124031) | [CVE-2026-124031: GPAC/MP4Box compositor/texturing.c:370 NULL Pointer Dereference in gf_node_get_tag](https://github.com/gpac/gpac/issues/4030) |
+| [CVE-2026-124307](https://nvd.nist.gov/vuln/detail/cve-2026-124307) | [CVE-2026-124307: fraunhoferhhi/vvdec DecoderLib/CABACReader.cpp:430 Use-After-Free in vvdec::CABACReader::readAlf](https://github.com/fraunhoferhhi/vvdec/issues/391) |
+| [CVE-2026-124308](https://nvd.nist.gov/vuln/detail/cve-2026-124308) | [CVE-2026-124308: fraunhoferhhi/vvdec DecoderLib/DecLibRecon.cpp:409 Use-After-Free in vvdec::DecLibRecon::createSubPicRefBufs](https://github.com/fraunhoferhhi/vvdec/issues/392) |
+| [CVE-2026-124309](https://nvd.nist.gov/vuln/detail/cve-2026-124309) | [CVE-2026-124309: fraunhoferhhi/vvdec CommonLib/Slice.h:644 Out-of-Bounds Read in vvdec::HRD::setBufferingPeriodSEI](https://github.com/fraunhoferhhi/vvdec/issues/397) |
+| [CVE-2026-124310](https://nvd.nist.gov/vuln/detail/cve-2026-124310) | [CVE-2026-124310: fraunhoferhhi/vvdec CommonLib/Picture.h:267 Out-of-Bounds Read in vvdec::Picture::isRefScaled](https://github.com/fraunhoferhhi/vvdec/issues/402) |
+| [CVE-2026-124311](https://nvd.nist.gov/vuln/detail/cve-2026-124311) | [CVE-2026-124311: fraunhoferhhi/vvdec CommonLib/InterPrediction.cpp:796 NULL Pointer Dereference in vvdec::InterPrediction::xPredInterBlk](https://github.com/fraunhoferhhi/vvdec/issues/420) |
+| [CVE-2026-124312](https://nvd.nist.gov/vuln/detail/cve-2026-124312) | [CVE-2026-124312: fraunhoferhhi/vvdec CommonLib/CodingStructure.cpp:458 Heap Buffer Overflow in vvdec::CodingStructure::getColInfo](https://github.com/fraunhoferhhi/vvdec/issues/422) |
 
 </details>
