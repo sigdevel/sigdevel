@@ -1137,6 +1137,27 @@ Source: <https://www.openwall.com/lists/oss-security/2026/10/29/3>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/60xxx/CVE-2025-60482.json>
 - <https://infosec.exchange/@sigdevel/117456522954593448>
 
+## CVE-2026-128239: GPAC/MP4Box: NULL Pointer Dereference in MPEG-4 Form Handlers via Crafted XMT Input
+
+[![Openwall CVE card](openwall-2026-11-13-3/openwall-2026-11-13-3.png)](https://www.openwall.com/lists/oss-security/2026/11/13/3)
+
+[PoC and References (TXT)](openwall-2026-11-13-3/openwall-2026-11-13-3.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/13/3>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/221/221_ab_apply_compositor_mpeg4_form_c_627.xmt>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/4029>
+- <https://github.com/gpac/gpac/pull/4039>
+- <https://github.com/gpac/gpac/commit/bc416b997622e43de65afab3bae9b7d05d72f2b0>
+- <https://www.cve.org/CVERecord?id=CVE-2026-128239>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/128xxx/CVE-2026-128239.json>
+- <https://www.vulncheck.com/advisories/gpac-through-26.07.0-null-pointer-dereference-via-mpeg-4-form-handlers>
+
 ## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
 
 [![Openwall CVE card](openwall-2026-10-30-8/openwall-2026-10-30-8.png)](https://www.openwall.com/lists/oss-security/2026/10/30/8)
