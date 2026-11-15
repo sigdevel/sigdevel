@@ -1158,6 +1158,67 @@ Source: <https://www.openwall.com/lists/oss-security/2026/11/13/3>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/128xxx/CVE-2026-128239.json>
 - <https://www.vulncheck.com/advisories/gpac-through-26.07.0-null-pointer-dereference-via-mpeg-4-form-handlers>
 
+## CVE-2026-128240: GPAC/MP4Box: Use-After-Free in gf_sg_proto_del During XMT Scene Teardown
+
+[![Openwall CVE card](openwall-2026-11-14-14/openwall-2026-11-14-14.png)](https://www.openwall.com/lists/oss-security/2026/11/14/14)
+
+[PoC and References (TXT)](openwall-2026-11-14-14/openwall-2026-11-14-14.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/14/14>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/223/223_gf_sg_proto_del_scenegraph_vrml_proto_c.xmt>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/4031>
+- <https://github.com/gpac/gpac/pull/4037>
+- <https://github.com/gpac/gpac/commit/a2e5c62c213b5329a4572fe8e7c333e1ca26d028>
+- <https://www.cve.org/CVERecord?id=CVE-2026-128240>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/128xxx/CVE-2026-128240.json>
+- <https://www.vulncheck.com/advisories/gpac-through-26.07.0-use-after-free-in-gf-sg-proto-del-during-scene-teardown>
+
+## CVE-2026-124031: GPAC/MP4Box: Type Confusion in Appearance Handling via Crafted XMT Input
+
+[![Openwall CVE card](openwall-2026-11-14-13/openwall-2026-11-14-13.png)](https://www.openwall.com/lists/oss-security/2026/11/14/13)
+
+[PoC and References (TXT)](openwall-2026-11-14-13/openwall-2026-11-14-13.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/14/13>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/222/222_gf_node_get_tag_compositor_texturing_c_370.xmt>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/4030>
+- <https://github.com/gpac/gpac/commit/43a8329a90ae2907716b593cc3746458516c7c39>
+- <https://www.cve.org/CVERecord?id=CVE-2026-124031>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/124xxx/CVE-2026-124031.json>
+- <https://www.vulncheck.com/advisories/gpac-through-26.07.0-type-confusion-via-drawable-get-aspect-2d-mpeg4>
+
+## CVE-2026-124030: GPAC/MP4Box: Type Confusion in XMT Field-Replace Commands
+
+[![Openwall CVE card](openwall-2026-11-14-12/openwall-2026-11-14-12.png)](https://www.openwall.com/lists/oss-security/2026/11/14/12)
+
+[PoC and References (TXT)](openwall-2026-11-14-12/openwall-2026-11-14-12.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/14/12>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/224/224_gf_sg_command_apply_scenegraph_commands_c_346.xmt>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/4032>
+- <https://github.com/gpac/gpac/commit/1359c4da9329cedceeb8fcfeab6d97e0927236e1>
+- <https://www.cve.org/CVERecord?id=CVE-2026-124030>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/124xxx/CVE-2026-124030.json>
+- <https://www.vulncheck.com/advisories/gpac-through-26.07.0-type-confusion-via-gf-sg-command-apply-xmt-field-replace>
+
 ## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
 
 [![Openwall CVE card](openwall-2026-10-30-8/openwall-2026-10-30-8.png)](https://www.openwall.com/lists/oss-security/2026/10/30/8)

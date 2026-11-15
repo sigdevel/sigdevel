@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/224/224_gf_sg_command_apply_scenegraph_commands_c_346.xmt
+
+References:
+https://github.com/gpac/gpac/issues/4032
+https://github.com/gpac/gpac/commit/1359c4da9329cedceeb8fcfeab6d97e0927236e1
+https://www.cve.org/CVERecord?id=CVE-2026-124030
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/124xxx/CVE-2026-124030.json
+https://www.vulncheck.com/advisories/gpac-through-26.07.0-type-confusion-via-gf-sg-command-apply-xmt-field-replace
