@@ -1297,6 +1297,24 @@ Source: <https://www.openwall.com/lists/oss-security/2026/11/16/7>
 - <https://www.cve.org/CVERecord?id=CVE-2025-71466>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71466.json>
 
+## CVE-2025-60465: Use-After-Free in GPAC/MP4Box via gf_filter_pid_inst_swap on crafted MPEG-2 TS file
+
+[![Openwall CVE card](openwall-2026-06-27-1/openwall-2026-06-27-1.png)](https://www.openwall.com/lists/oss-security/2026/06/27/1)
+
+[PoC and References (TXT)](openwall-2026-06-27-1/openwall-2026-06-27-1.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/06/27/1>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/34/34_gf_filter_pid_inst_swap_filter_core_filter_pid_c_633>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3283>
+- <https://www.cve.org/CVERecord?id=CVE-2025-60465>
+- <https://infosec.exchange/@sigdevel/116778494176930561>
+
 ## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
 
 [![Openwall CVE card](openwall-2026-10-30-8/openwall-2026-10-30-8.png)](https://www.openwall.com/lists/oss-security/2026/10/30/8)
