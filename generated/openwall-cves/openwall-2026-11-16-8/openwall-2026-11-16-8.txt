@@ -1,0 +1,8 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/27/27_gf_node_get_field_by_name_scenegraph_base_scenegraph_c_2088
+
+References:
+https://github.com/gpac/gpac/issues/3268
+https://github.com/gpac/gpac/commit/62714f27c64a3d1eb7e880f9eed2d38673cb43ce
+https://www.cve.org/CVERecord?id=CVE-2025-71467
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71467.json

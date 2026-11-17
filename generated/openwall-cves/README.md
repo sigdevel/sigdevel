@@ -105,6 +105,46 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/29/6>
 - <https://infosec.exchange/@sigdevel/116668958927817708>
 - <https://bdu.fstec.ru/vul/2025-15479>
 
+## CVE-2025-71470: MicroQuickJS: Out-of-Bounds Read in build_backtrace via Crafted JavaScript Input
+
+[![Openwall CVE card](openwall-2026-11-16-9/openwall-2026-11-16-9.png)](https://www.openwall.com/lists/oss-security/2026/11/16/9)
+
+[PoC and References (TXT)](openwall-2026-11-16-9/openwall-2026-11-16-9.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/16/9>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/mquickjs/1/mquickjs_c_3981>
+
+**References:**
+
+- <https://github.com/bellard/mquickjs/issues/24>
+- <https://github.com/bellard/mquickjs/commit/99eed3f94cb66ea7e02fd3472ca7374dee31bb89>
+- <https://www.cve.org/CVERecord?id=CVE-2025-71470>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71470.json>
+
+## CVE-2026-129490: littlefs: Type Confusion and Stack Out-of-Bounds Read in lfs_dir_traverse via Crafted v1 Image Migration
+
+[![Openwall CVE card](openwall-2026-11-16-6/openwall-2026-11-16-6.png)](https://www.openwall.com/lists/oss-security/2026/11/16/6)
+
+[PoC and References (TXT)](openwall-2026-11-16-6/openwall-2026-11-16-6.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/16/6>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/littlefs/1/1_lfs_dir_traverse_lfs_c_1059.img>
+
+**References:**
+
+- <https://github.com/littlefs-project/littlefs/issues/1213>
+- <https://github.com/littlefs-project/littlefs/pull/1224>
+- <https://github.com/littlefs-project/littlefs/blob/v2.11.3/lfs.c#L1056-L1063>
+- <https://github.com/sigdevel/pocs/blob/main/res/littlefs/1/fuzz_migrate.c>
+- <https://www.cve.org/CVERecord?id=CVE-2026-129490>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/129xxx/CVE-2026-129490.json>
+
 ## CVE-2025-55639: NULL Pointer Dereference in GPAC/MP4Box via gf_isom_add_track_kind on crafted MP4 file
 
 [![Openwall CVE card](openwall-2026-06-26-2/openwall-2026-06-26-2.png)](https://www.openwall.com/lists/oss-security/2026/06/26/2)
@@ -1218,6 +1258,44 @@ Source: <https://www.openwall.com/lists/oss-security/2026/11/14/12>
 - <https://www.cve.org/CVERecord?id=CVE-2026-124030>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/124xxx/CVE-2026-124030.json>
 - <https://www.vulncheck.com/advisories/gpac-through-26.07.0-type-confusion-via-gf-sg-command-apply-xmt-field-replace>
+
+## CVE-2025-71467: GPAC/MP4Box: NULL Pointer Dereference in gf_node_get_field_by_name via Crafted XMT Input Product: GPAC (MP4Box)
+
+[![Openwall CVE card](openwall-2026-11-16-8/openwall-2026-11-16-8.png)](https://www.openwall.com/lists/oss-security/2026/11/16/8)
+
+[PoC and References (TXT)](openwall-2026-11-16-8/openwall-2026-11-16-8.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/16/8>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/27/27_gf_node_get_field_by_name_scenegraph_base_scenegraph_c_2088>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3268>
+- <https://github.com/gpac/gpac/commit/62714f27c64a3d1eb7e880f9eed2d38673cb43ce>
+- <https://www.cve.org/CVERecord?id=CVE-2025-71467>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71467.json>
+
+## CVE-2025-71466: GPAC/MP4Box: NULL Pointer Dereference in m2tsdmx_update_sdt via Crafted MPEG-2 TS Input
+
+[![Openwall CVE card](openwall-2026-11-16-7/openwall-2026-11-16-7.png)](https://www.openwall.com/lists/oss-security/2026/11/16/7)
+
+[PoC and References (TXT)](openwall-2026-11-16-7/openwall-2026-11-16-7.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/16/7>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/26/26_m2tsdmx_update_sdt_filters_dmx_m2ts_c_218>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3267>
+- <https://github.com/gpac/gpac/commit/62714f27c64a3d1eb7e880f9eed2d38673cb43ce>
+- <https://www.cve.org/CVERecord?id=CVE-2025-71466>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71466.json>
 
 ## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
 

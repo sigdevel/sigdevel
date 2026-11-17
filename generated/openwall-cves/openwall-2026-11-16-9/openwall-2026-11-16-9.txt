@@ -1,0 +1,8 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/mquickjs/1/mquickjs_c_3981
+
+References:
+https://github.com/bellard/mquickjs/issues/24
+https://github.com/bellard/mquickjs/commit/99eed3f94cb66ea7e02fd3472ca7374dee31bb89
+https://www.cve.org/CVERecord?id=CVE-2025-71470
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71470.json
