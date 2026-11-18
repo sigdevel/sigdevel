@@ -1315,6 +1315,44 @@ Source: <https://www.openwall.com/lists/oss-security/2026/06/27/1>
 - <https://www.cve.org/CVERecord?id=CVE-2025-60465>
 - <https://infosec.exchange/@sigdevel/116778494176930561>
 
+## CVE-2025-71468: GPAC/MP4Box: NULL Pointer Dereference in gf_dash_group_get_audio_channels via Crafted DASH Manifest
+
+[![Openwall CVE card](openwall-2026-11-17-21/openwall-2026-11-17-21.png)](https://www.openwall.com/lists/oss-security/2026/11/17/21)
+
+[PoC and References (TXT)](openwall-2026-11-17-21/openwall-2026-11-17-21.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/17/21>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/28/28_gf_dash_group_get_audio_channels_media_tools_dash_client_c_10769>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3269>
+- <https://github.com/gpac/gpac/commit/62714f27c64a3d1eb7e880f9eed2d38673cb43ce>
+- <https://www.cve.org/CVERecord?id=CVE-2025-71468>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71468.json>
+
+## CVE-2025-71469: GPAC/MP4Box: Type Confusion in XMT/BT Scene Loader Causing a Crash in gf_scene_ns_connect_object
+
+[![Openwall CVE card](openwall-2026-11-17-22/openwall-2026-11-17-22.png)](https://www.openwall.com/lists/oss-security/2026/11/17/22)
+
+[PoC and References (TXT)](openwall-2026-11-17-22/openwall-2026-11-17-22.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/17/22>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/30/30_compositor_scene_ns_c_479_in_gf_scene_ns_connect_object>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3271>
+- <https://github.com/gpac/gpac/commit/62714f27c64a3d1eb7e880f9eed2d38673cb43ce>
+- <https://www.cve.org/CVERecord?id=CVE-2025-71469>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71469.json>
+
 ## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
 
 [![Openwall CVE card](openwall-2026-10-30-8/openwall-2026-10-30-8.png)](https://www.openwall.com/lists/oss-security/2026/10/30/8)
