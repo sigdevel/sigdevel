@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/69/69_utils_list_c_672
+
+References:
+https://github.com/gpac/gpac/issues/3412
+https://github.com/gpac/gpac/commit/a8c83bd36ca074b81c39ae5ccc0c8580d098072a
+https://www.cve.org/CVERecord?id=CVE-2025-71471
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71471.json
+https://www.vulncheck.com/advisories/gpac-before-26.02.0-uninitialized-memory-use-in-stbl-addcts

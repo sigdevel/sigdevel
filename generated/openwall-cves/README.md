@@ -1353,6 +1353,86 @@ Source: <https://www.openwall.com/lists/oss-security/2026/11/17/22>
 - <https://www.cve.org/CVERecord?id=CVE-2025-71469>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71469.json>
 
+## CVE-2025-71471: GPAC/MP4Box: Use of Uninitialized Memory in stbl_AddCTS via Crafted MP4 Input
+
+[![Openwall CVE card](openwall-2026-11-18-12/openwall-2026-11-18-12.png)](https://www.openwall.com/lists/oss-security/2026/11/18/12)
+
+[PoC and References (TXT)](openwall-2026-11-18-12/openwall-2026-11-18-12.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/18/12>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/69/69_utils_list_c_672>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3412>
+- <https://github.com/gpac/gpac/commit/a8c83bd36ca074b81c39ae5ccc0c8580d098072a>
+- <https://www.cve.org/CVERecord?id=CVE-2025-71471>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2025/71xxx/CVE-2025-71471.json>
+- <https://www.vulncheck.com/advisories/gpac-before-26.02.0-uninitialized-memory-use-in-stbl-addcts>
+
+## CVE-2026-130630: GPAC/MP4Box: NULL Pointer Dereference in dasher_configure_pid via Crafted MPEG-2 TS Input
+
+[![Openwall CVE card](openwall-2026-11-18-13/openwall-2026-11-18-13.png)](https://www.openwall.com/lists/oss-security/2026/11/18/13)
+
+[PoC and References (TXT)](openwall-2026-11-18-13/openwall-2026-11-18-13.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/18/13>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/70/70_dasher_configure_pid>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3500>
+- <https://github.com/gpac/gpac/commit/8ed521b69dcbf9a5a79b52b7d43d507ccb048c84>
+- <https://www.cve.org/CVERecord?id=CVE-2026-130630>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130630.json>
+- <https://www.vulncheck.com/advisories/gpac-26.02.0-null-pointer-dereference-via-dasher-configure-pid>
+
+## CVE-2026-130631: GPAC/MP4Box: Uninitialized Pointer Access in GetESD via RVC Configuration
+
+[![Openwall CVE card](openwall-2026-11-18-14/openwall-2026-11-18-14.png)](https://www.openwall.com/lists/oss-security/2026/11/18/14)
+
+[PoC and References (TXT)](openwall-2026-11-18-14/openwall-2026-11-18-14.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/18/14>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/73/73_isomedia_track_c_GetESD>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3592>
+- <https://github.com/gpac/gpac/commit/25081b9610477fc8de48d2f1cadd3fd232a9dcbc>
+- <https://www.cve.org/CVERecord?id=CVE-2026-130631>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130631.json>
+- <https://www.vulncheck.com/advisories/gpac-before-26.07.0-uninitialized-pointer-access-in-getesd-via-rvc-configuration>
+
+## CVE-2026-130633: GPAC/MP4Box: Heap Use-After-Free in gf_props_del_property via PID Property Arguments
+
+[![Openwall CVE card](openwall-2026-11-18-15/openwall-2026-11-18-15.png)](https://www.openwall.com/lists/oss-security/2026/11/18/15)
+
+[PoC and References (TXT)](openwall-2026-11-18-15/openwall-2026-11-18-15.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/18/15>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/72/72_gf_props_del_property>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3441>
+- <https://github.com/gpac/gpac/commit/d65d699012bd82a0839e8af6747bca438e26938a>
+- <https://www.cve.org/CVERecord?id=CVE-2026-130633>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130633.json>
+- <https://www.vulncheck.com/advisories/gpac-before-26.02.0-use-after-free-via-pid-property-arguments>
+
 ## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
 
 [![Openwall CVE card](openwall-2026-10-30-8/openwall-2026-10-30-8.png)](https://www.openwall.com/lists/oss-security/2026/10/30/8)

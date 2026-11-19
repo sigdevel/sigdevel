@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/73/73_isomedia_track_c_GetESD
+
+References:
+https://github.com/gpac/gpac/issues/3592
+https://github.com/gpac/gpac/commit/25081b9610477fc8de48d2f1cadd3fd232a9dcbc
+https://www.cve.org/CVERecord?id=CVE-2026-130631
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130631.json
+https://www.vulncheck.com/advisories/gpac-before-26.07.0-uninitialized-pointer-access-in-getesd-via-rvc-configuration

@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/70/70_dasher_configure_pid
+
+References:
+https://github.com/gpac/gpac/issues/3500
+https://github.com/gpac/gpac/commit/8ed521b69dcbf9a5a79b52b7d43d507ccb048c84
+https://www.cve.org/CVERecord?id=CVE-2026-130630
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130630.json
+https://www.vulncheck.com/advisories/gpac-26.02.0-null-pointer-dereference-via-dasher-configure-pid
