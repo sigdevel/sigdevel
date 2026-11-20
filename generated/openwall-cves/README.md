@@ -1433,6 +1433,86 @@ Source: <https://www.openwall.com/lists/oss-security/2026/11/18/15>
 - <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130633.json>
 - <https://www.vulncheck.com/advisories/gpac-before-26.02.0-use-after-free-via-pid-property-arguments>
 
+## CVE-2026-130635: GPAC/MP4Box: Uncontrolled Recursion in dasher_gather_deps via Cyclic Stream Dependencies
+
+[![Openwall CVE card](openwall-2026-11-20-10/openwall-2026-11-20-10.png)](https://www.openwall.com/lists/oss-security/2026/11/20/10)
+
+[PoC and References (TXT)](openwall-2026-11-20-10/openwall-2026-11-20-10.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/20/10>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/77/77_utils_list_c_718_gf_list_insert>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3585>
+- <https://github.com/gpac/gpac/commit/5439b94d091e764742a6b108509516d3810bd034>
+- <https://www.cve.org/CVERecord?id=CVE-2026-130635>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130635.json>
+- <https://www.vulncheck.com/advisories/gpac-before-26.07.0-uncontrolled-recursion-via-dasher-gather-deps>
+
+## CVE-2026-130793: GPAC/MP4Box: Stack Buffer Overflow in gf_filter_pid_resolve_file_template_ex via Crafted NHML Input
+
+[![Openwall CVE card](openwall-2026-11-20-9/openwall-2026-11-20-9.png)](https://www.openwall.com/lists/oss-security/2026/11/20/9)
+
+[PoC and References (TXT)](openwall-2026-11-20-9/openwall-2026-11-20-9.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/20/9>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/78/78_filter_core_filter_pid_c_9366_gf_filter_pid_resolve_file_template_ex>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3586>
+- <https://github.com/gpac/gpac/commit/5439b94d091e764742a6b108509516d3810bd034>
+- <https://www.cve.org/CVERecord?id=CVE-2026-130793>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130793.json>
+- <https://www.vulncheck.com/advisories/gpac-before-26.07.0-stack-based-buffer-overflow-via-gf-filter-pid-resolve-file-template-ex>
+
+## CVE-2026-130634: GPAC/MP4Box: Heap Buffer Overflow in gf_mpd_resolve_url via Crafted DASH Manifest
+
+[![Openwall CVE card](openwall-2026-11-20-8/openwall-2026-11-20-8.png)](https://www.openwall.com/lists/oss-security/2026/11/20/8)
+
+[PoC and References (TXT)](openwall-2026-11-20-8/openwall-2026-11-20-8.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/20/8>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/75/75_media_tools_mpd_c_5684_gf_mpd_resolve_url>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3582>
+- <https://github.com/gpac/gpac/commit/5439b94d091e764742a6b108509516d3810bd034>
+- <https://www.cve.org/CVERecord?id=CVE-2026-130634>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130634.json>
+- <https://www.vulncheck.com/advisories/gpac-before-26.07.0-heap-based-buffer-overflow-via-gf-mpd-resolve-url>
+
+## CVE-2026-130632: GPAC/MP4Box: Out-of-Bounds Read in m2tsdmx_send_packet via Crafted MPEG-2 TS VC-1 Input
+
+[![Openwall CVE card](openwall-2026-11-20-7/openwall-2026-11-20-7.png)](https://www.openwall.com/lists/oss-security/2026/11/20/7)
+
+[PoC and References (TXT)](openwall-2026-11-20-7/openwall-2026-11-20-7.txt)
+
+Source: <https://www.openwall.com/lists/oss-security/2026/11/20/7>
+
+**PoC:**
+
+- <https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/74/74_m2tsdmx_send_packet>
+
+**References:**
+
+- <https://github.com/gpac/gpac/issues/3442>
+- <https://github.com/gpac/gpac/commit/d65d699012bd82a0839e8af6747bca438e26938a>
+- <https://www.cve.org/CVERecord?id=CVE-2026-130632>
+- <https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130632.json>
+- <https://www.vulncheck.com/advisories/gpac-before-26.02.0-out-of-bounds-read-via-m2tsdmx-send-packet>
+
 ## CVE-2025-70102: dhcpcd: NULL Pointer Dereference in Configuration Option Parsing Product: dhcpcd
 
 [![Openwall CVE card](openwall-2026-10-30-8/openwall-2026-10-30-8.png)](https://www.openwall.com/lists/oss-security/2026/10/30/8)

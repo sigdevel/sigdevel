@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/74/74_m2tsdmx_send_packet
+
+References:
+https://github.com/gpac/gpac/issues/3442
+https://github.com/gpac/gpac/commit/d65d699012bd82a0839e8af6747bca438e26938a
+https://www.cve.org/CVERecord?id=CVE-2026-130632
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130632.json
+https://www.vulncheck.com/advisories/gpac-before-26.02.0-out-of-bounds-read-via-m2tsdmx-send-packet

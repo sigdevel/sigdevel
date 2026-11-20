@@ -1,0 +1,9 @@
+PoC:
+https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/78/78_filter_core_filter_pid_c_9366_gf_filter_pid_resolve_file_template_ex
+
+References:
+https://github.com/gpac/gpac/issues/3586
+https://github.com/gpac/gpac/commit/5439b94d091e764742a6b108509516d3810bd034
+https://www.cve.org/CVERecord?id=CVE-2026-130793
+https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2026/130xxx/CVE-2026-130793.json
+https://www.vulncheck.com/advisories/gpac-before-26.07.0-stack-based-buffer-overflow-via-gf-filter-pid-resolve-file-template-ex
