@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 from html.parser import HTMLParser
 
 SUBJECT_RE = re.compile(r"Subject:\s*(.+?)(?:\n\s*\n|\r?\n(?:Date|From|To|Message-ID):|$)", re.IGNORECASE | re.DOTALL)
@@ -29,26 +29,45 @@ class CvePost:
     cve_url: str | None = None
 
 
+def extract_record_cve(url: str) -> str | None:
+    """Validate supported CVE record URLs and return their identifier."""
+    parsed = urlsplit(url)
+    if parsed.hostname == "nvd.nist.gov":
+        match = re.fullmatch(r"/vuln/detail/(CVE-\d{4}-\d{4,7})/?", parsed.path, re.I)
+        if not match:
+            raise ValueError("Invalid NVD URL")
+        return match[1].upper()
+    if parsed.hostname in {"www.cve.org", "cve.org"}:
+        ids = parse_qs(parsed.query).get("id", [])
+        if (parsed.path.rstrip("/") != "/CVERecord" or len(ids) != 1
+                or not CVE_RE.fullmatch(ids[0])):
+            raise ValueError("Invalid CVE.org URL")
+        return ids[0].upper()
+    return None
+
+
 def load_sources(path: Path) -> list[tuple[str, str | None]]:
-    """Read Openwall URLs or NVD/issue URL pairs (plain or Markdown)."""
+    """Read Openwall URLs or NVD/CVE.org + issue pairs (plain or Markdown)."""
     sources = []
     seen = set()
-    standalone_nvd = []
+    standalone_records = []
     for number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         line = raw.split("#", 1)[0].strip()
         if not line:
             continue
+        line = re.sub(r"\\([:./()\[\]])", r"\1", line)
         urls = list(dict.fromkeys(re.findall(r'https?://[^\s<>\]\)\\]+', line)))
         if not urls:
             continue
-        first = urlsplit(urls[0])
-        if first.hostname == "nvd.nist.gov":
-            if not re.fullmatch(r"/vuln/detail/CVE-\d{4}-\d{4,7}/?", first.path, re.I):
-                raise ValueError(f"Invalid NVD URL on line {number}")
+        try:
+            record_cve = extract_record_cve(urls[0])
+        except ValueError as exc:
+            raise ValueError(f"{exc} on line {number}") from exc
+        if record_cve:
             issues = [url for url in urls[1:] if urlsplit(url).hostname == "github.com"
                       and re.fullmatch(r"/[^/]+/[^/]+/issues/\d+/?", urlsplit(url).path)]
             if len(urls) == 1:
-                standalone_nvd.append((number, urls[0]))
+                standalone_records.append((number, urls[0]))
                 continue
             if len(issues) != 1:
                 raise ValueError(f"Expected one GitHub issue URL on line {number}")
@@ -58,11 +77,12 @@ def load_sources(path: Path) -> list[tuple[str, str | None]]:
         if source not in seen:
             sources.append(source)
             seen.add(source)
-    paired_nvd = {url.lower().rstrip("/") for url, issue in sources if issue}
-    for number, url in standalone_nvd:
-        if url.lower().rstrip("/") not in paired_nvd:
+    paired_records = {url.lower().rstrip("/") for url, issue in sources if issue}
+    for number, url in standalone_records:
+        if url.lower().rstrip("/") not in paired_records:
+            provider = "NVD" if urlsplit(url).hostname == "nvd.nist.gov" else "CVE.org"
             raise ValueError(
-                f"NVD URL on line {number} requires a GitHub issue URL on the same line"
+                f"{provider} URL on line {number} requires a GitHub issue URL on the same line"
             )
     return sources
 
@@ -148,14 +168,19 @@ def collect_posts(urls: list[str | tuple[str, str | None]], timeout: int) -> lis
         url, issue = source if isinstance(source, tuple) else (source, None)
         try:
             if issue:
+                cve = extract_record_cve(url)
+                if not cve:
+                    raise ValueError("Unsupported CVE record URL")
                 subject = extract_issue_subject(fetch_text(issue, timeout))
-                cves = extract_cves(urlsplit(url).path)
+                cves = (cve,)
                 subject = re.sub(
                     rf"^{re.escape(cves[0])}\b\s*:?\s*", "", subject, flags=re.I
                 )
-                repository = "/".join(urlsplit(issue).path.strip("/").split("/")[:2])
-                repository = REPOSITORY_ALIASES.get(repository.lower(), repository)
-                subject = f"{cves[0]}: {repository} {subject}"
+                if urlsplit(url).hostname == "nvd.nist.gov":
+                    repository = "/".join(urlsplit(issue).path.strip("/").split("/")[:2])
+                    repository = REPOSITORY_ALIASES.get(repository.lower(), repository)
+                    subject = f"{repository} {subject}"
+                subject = f"{cve}: {subject}"
                 posts.append(CvePost(url=issue, subject=subject, cves=cves, cve_url=url))
                 continue
             page_text = fetch_text(url, timeout)

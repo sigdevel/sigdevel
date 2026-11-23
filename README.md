@@ -98,5 +98,6 @@
 | [CVE-2026-124310](https://nvd.nist.gov/vuln/detail/cve-2026-124310) | [CVE-2026-124310: fraunhoferhhi/vvdec CommonLib/Picture.h:267 Out-of-Bounds Read in vvdec::Picture::isRefScaled](https://github.com/fraunhoferhhi/vvdec/issues/402) |
 | [CVE-2026-124311](https://nvd.nist.gov/vuln/detail/cve-2026-124311) | [CVE-2026-124311: fraunhoferhhi/vvdec CommonLib/InterPrediction.cpp:796 NULL Pointer Dereference in vvdec::InterPrediction::xPredInterBlk](https://github.com/fraunhoferhhi/vvdec/issues/420) |
 | [CVE-2026-124312](https://nvd.nist.gov/vuln/detail/cve-2026-124312) | [CVE-2026-124312: fraunhoferhhi/vvdec CommonLib/CodingStructure.cpp:458 Heap Buffer Overflow in vvdec::CodingStructure::getColInfo](https://github.com/fraunhoferhhi/vvdec/issues/422) |
+| [CVE-2026-134686](https://www.cve.org/CVERecord?id=CVE-2026-134686) | [CVE-2026-134686: scenegraph/base_scenegraph.c:830 NULL Pointer Dereference in gf_node_register](https://github.com/gpac/gpac/issues/3848) |
 
 </details>

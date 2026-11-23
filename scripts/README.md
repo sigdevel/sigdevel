@@ -70,3 +70,25 @@ are excluded from the Openwall PNG renderer.
 A standalone NVD URL that duplicates an explicit NVD/issue pair is ignored,
 regardless of line order. A standalone NVD URL without a pair is an input
 error: add its GitHub issue URL on the same line.
+
+## CVE.org and GitHub issues in the CVE list
+
+CVE.org record URLs are also supported, with the GitHub issue on the same
+line (plain URLs, Markdown links and escaped Markdown punctuation are accepted):
+
+```text
+https://www.cve.org/CVERecord?id=CVE-2026-134686 [/issues](https://github.com/gpac/gpac/issues/3848)
+```
+
+The identifier comes from the record URL's `id` query parameter; the record
+page is not fetched. The description uses the GitHub issue title without a
+leading `[security]` or GitHub's title suffix, prefixed with `CVE-…: `.
+An existing leading CVE identifier is not repeated. No repository name is
+added for CVE.org sources. The example renders as:
+
+| CVE | Description |
+| --- | --- |
+| [CVE-2026-134686](https://www.cve.org/CVERecord?id=CVE-2026-134686) | [CVE-2026-134686: scenegraph/base_scenegraph.c:830 NULL Pointer Dereference in gf_node_register](https://github.com/gpac/gpac/issues/3848) |
+
+Validation, duplicate handling and exclusion from the Openwall PNG renderer
+work the same way as for NVD/issue pairs.
