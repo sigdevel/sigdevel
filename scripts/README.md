@@ -90,5 +90,22 @@ added for CVE.org sources. The example renders as:
 | --- | --- |
 | [CVE-2026-134686](https://www.cve.org/CVERecord?id=CVE-2026-134686) | [CVE-2026-134686: scenegraph/base_scenegraph.c:830 NULL Pointer Dereference in gf_node_register](https://github.com/gpac/gpac/issues/3848) |
 
-Validation, duplicate handling and exclusion from the Openwall PNG renderer
-work the same way as for NVD/issue pairs.
+### Standalone CVE.org records
+
+A CVE.org URL can also appear on its own:
+
+```text
+https://www.cve.org/CVERecord?id=CVE-2025-71474
+```
+
+For these entries, the renderer fetches the official JSON record from
+`CVEProject/cvelistV5` and uses its CNA title, falling back to the English
+description when the title is absent. Both table cells link to the original
+CVE.org URL. The CVE identifier remains visible if the record cannot be fetched
+or has no title or English description; a warning is printed and the description
+reads `Subject unavailable`.
+
+Duplicate URLs are ignored. When the same CVE.org URL has an explicit GitHub
+issue pair elsewhere in the file, that pair takes precedence regardless of
+line order. All CVE.org entries are excluded from the Openwall PNG renderer.
+Standalone NVD URLs still require an explicit issue pair.

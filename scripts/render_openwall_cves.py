@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import json
 import re
 import sys
 from dataclasses import dataclass
@@ -47,7 +48,7 @@ def extract_record_cve(url: str) -> str | None:
 
 
 def load_sources(path: Path) -> list[tuple[str, str | None]]:
-    """Read Openwall URLs or NVD/CVE.org + issue pairs (plain or Markdown)."""
+    """Read Openwall posts, standalone CVE.org records, and record/issue pairs."""
     sources = []
     seen = set()
     standalone_records = []
@@ -68,10 +69,11 @@ def load_sources(path: Path) -> list[tuple[str, str | None]]:
                       and re.fullmatch(r"/[^/]+/[^/]+/issues/\d+/?", urlsplit(url).path)]
             if len(urls) == 1:
                 standalone_records.append((number, urls[0]))
-                continue
-            if len(issues) != 1:
-                raise ValueError(f"Expected one GitHub issue URL on line {number}")
-            source = (urls[0], issues[0])
+                source = (urls[0], None)
+            else:
+                if len(issues) != 1:
+                    raise ValueError(f"Expected one GitHub issue URL on line {number}")
+                source = (urls[0], issues[0])
         else:
             source = (urls[0], None)
         if source not in seen:
@@ -79,17 +81,51 @@ def load_sources(path: Path) -> list[tuple[str, str | None]]:
             seen.add(source)
     paired_records = {url.lower().rstrip("/") for url, issue in sources if issue}
     for number, url in standalone_records:
-        if url.lower().rstrip("/") not in paired_records:
-            provider = "NVD" if urlsplit(url).hostname == "nvd.nist.gov" else "CVE.org"
+        if (url.lower().rstrip("/") not in paired_records
+                and urlsplit(url).hostname == "nvd.nist.gov"):
             raise ValueError(
-                f"{provider} URL on line {number} requires a GitHub issue URL on the same line"
+                f"NVD URL on line {number} requires a GitHub issue URL on the same line"
             )
-    return sources
+    return [(url, issue) for url, issue in sources
+            if issue or url.lower().rstrip("/") not in paired_records]
 
 
 def load_urls(path: Path) -> list[str]:
     # PNG cards still consume Openwall messages only.
-    return [url for url, issue in load_sources(path) if issue is None]
+    return [url for url, issue in load_sources(path)
+            if issue is None and extract_record_cve(url) is None]
+
+
+def cve_record_json_url(cve: str) -> str:
+    """Locate the official CVE List record, avoiding CVE.org's JavaScript UI."""
+    _, year, number = cve.split("-")
+    return ("https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/"
+            f"{year}/{number[:-3]}xxx/{cve}.json")
+
+
+def extract_record_subject(record_text: str, cve: str) -> str:
+    record = json.loads(record_text)
+    metadata = record.get("cveMetadata") if isinstance(record, dict) else None
+    if not isinstance(metadata, dict) or metadata.get("cveId") != cve:
+        raise ValueError(f"CVE record does not match {cve}")
+    containers = record.get("containers")
+    cna = containers.get("cna") if isinstance(containers, dict) else None
+    if not isinstance(cna, dict):
+        raise ValueError("CVE record title unavailable")
+    title = cna.get("title")
+    if not isinstance(title, str) or not title.strip():
+        descriptions = cna.get("descriptions", [])
+        title = None
+        if isinstance(descriptions, list):
+            title = next((item["value"] for item in descriptions
+                          if isinstance(item, dict) and item.get("lang") == "en"
+                          and isinstance(item.get("value"), str) and item["value"].strip()), None)
+    if not title:
+        raise ValueError("CVE record title unavailable")
+    subject = WS_RE.sub(" ", title).strip()
+    subject = re.sub(r"^\[security\]\s*", "", subject, flags=re.I)
+    subject = re.sub(rf"^{re.escape(cve)}\b\s*:?\s*", "", subject, flags=re.I)
+    return f"{cve}: {subject}"
 
 
 class IssueTitleParser(HTMLParser):
@@ -166,6 +202,7 @@ def collect_posts(urls: list[str | tuple[str, str | None]], timeout: int) -> lis
     failures: list[str] = []
     for source in urls:
         url, issue = source if isinstance(source, tuple) else (source, None)
+        cves: tuple[str, ...] = ()
         try:
             if issue:
                 cve = extract_record_cve(url)
@@ -183,16 +220,24 @@ def collect_posts(urls: list[str | tuple[str, str | None]], timeout: int) -> lis
                 subject = f"{cve}: {subject}"
                 posts.append(CvePost(url=issue, subject=subject, cves=cves, cve_url=url))
                 continue
+            if urlsplit(url).hostname in {"www.cve.org", "cve.org"}:
+                cve = extract_record_cve(url)
+                if not cve:
+                    raise ValueError("Unsupported CVE record URL")
+                cves = (cve,)
+                subject = extract_record_subject(fetch_text(cve_record_json_url(cve), timeout), cve)
+                posts.append(CvePost(url=url, subject=subject, cves=cves))
+                continue
             page_text = fetch_text(url, timeout)
             subject = extract_subject(page_text)
             cves = extract_cves(subject)
             posts.append(CvePost(url=url, subject=subject, cves=cves))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             failures.append(f"{url}: {exc}")
-            posts.append(CvePost(url=url, subject="Subject unavailable", cves=()))
+            posts.append(CvePost(url=url, subject="Subject unavailable", cves=cves))
 
     if failures:
-        print("Warnings while fetching Openwall posts:", file=sys.stderr)
+        print("Warnings while fetching CVE sources:", file=sys.stderr)
         for failure in failures:
             print(f"- {failure}", file=sys.stderr)
     return posts

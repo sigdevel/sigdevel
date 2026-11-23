@@ -1,3 +1,5 @@
+import io
+import json
 import sys
 import tempfile
 import unittest
@@ -13,9 +15,80 @@ TITLE = 'compositor/texturing.c:370 NULL Pointer Dereference in gf_node_get_tag'
 CVE_ORG = 'https://www.cve.org/CVERecord?id=CVE-2026-134686'
 CVE_ISSUE = 'https://github.com/gpac/gpac/issues/3848'
 CVE_TITLE = 'scenegraph/base_scenegraph.c:830 NULL Pointer Dereference in gf_node_register'
+STANDALONE_CVE = 'CVE-2025-71474'
+STANDALONE_URL = f'https://www.cve.org/CVERecord?id={STANDALONE_CVE}'
+RECORD_TITLE = 'lwext4 through 1.0.0 Out-of-Bounds Write via ext4_fs_init_block_bitmap'
+
+
+def record_json(**cna):
+    return json.dumps({'cveMetadata': {'cveId': STANDALONE_CVE},
+                       'containers': {'cna': cna}})
 
 
 class SourceTests(unittest.TestCase):
+    def test_standalone_cve_org_formats_order_and_png_exclusion(self):
+        openwall = 'https://www.openwall.com/example'
+        escaped = STANDALONE_URL.replace(':', r'\:').replace('.', r'\.')
+        with tempfile.TemporaryDirectory() as td:
+            p = Path(td) / 'links'
+            p.write_text(f'{STANDALONE_URL}\n{openwall}\n'
+                         f'[{STANDALONE_CVE}]({STANDALONE_URL})\n{escaped}\n', encoding='utf-8')
+            self.assertEqual(r.load_sources(p), [(STANDALONE_URL, None), (openwall, None)])
+            self.assertEqual(r.load_urls(p), [openwall])
+
+    def test_standalone_cve_org_title_and_destinations(self):
+        with patch.object(r, 'fetch_text', return_value=record_json(title=RECORD_TITLE)) as fetch:
+            post = r.collect_posts([STANDALONE_URL], 20)[0]
+            fetch.assert_called_once_with(
+                'https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/'
+                '2025/71xxx/CVE-2025-71474.json', 20)
+        self.assertEqual(post.cves, (STANDALONE_CVE,))
+        self.assertEqual(post.subject, f'{STANDALONE_CVE}: {RECORD_TITLE}')
+        table = r.render_markdown_table([post])
+        self.assertIn(f'[{STANDALONE_CVE}]({STANDALONE_URL})', table)
+        self.assertIn(f'[{STANDALONE_CVE}: {RECORD_TITLE}]({STANDALONE_URL})', table)
+
+    def test_record_title_falls_back_to_english_description(self):
+        record = record_json(descriptions=[{'lang': 'fr', 'value': 'French description'},
+                                           {'lang': 'en', 'value': 'English\n description'}])
+        self.assertEqual(r.extract_record_subject(record, STANDALONE_CVE),
+                         f'{STANDALONE_CVE}: English description')
+        record = record_json(title=f'[security] {STANDALONE_CVE}: {RECORD_TITLE}')
+        self.assertEqual(r.extract_record_subject(record, STANDALONE_CVE),
+                         f'{STANDALONE_CVE}: {RECORD_TITLE}')
+
+    def test_standalone_cve_failure_retains_identifier_and_link(self):
+        for response in ('not JSON', '{}', '[]', record_json(),
+                         record_json(title=RECORD_TITLE).replace(STANDALONE_CVE, 'CVE-2025-1234')):
+            with self.subTest(response=response):
+                with patch.object(r, 'fetch_text', return_value=response), patch('sys.stderr', new=io.StringIO()):
+                    post = r.collect_posts([(STANDALONE_URL, None)], 20)[0]
+                self.assertEqual(post.cves, (STANDALONE_CVE,))
+                self.assertEqual(post.subject, 'Subject unavailable')
+                self.assertIn(f'[{STANDALONE_CVE}]({STANDALONE_URL})', r.render_markdown_table([post]))
+        with patch.object(r, 'fetch_text', side_effect=TimeoutError('timeout')), patch('sys.stderr', new=io.StringIO()):
+            post = r.collect_posts([(STANDALONE_URL, None)], 20)[0]
+        self.assertEqual(post.cves, (STANDALONE_CVE,))
+
+    def test_standalone_cve_main_updates_readme_and_svg(self):
+        with tempfile.TemporaryDirectory() as td:
+            source, readme, output = (Path(td) / name for name in ('links', 'README.md', 'card.svg'))
+            source.write_text(STANDALONE_URL, encoding='utf-8')
+            readme.write_text('| CVE | Description |\n| --- | --- |\n', encoding='utf-8')
+            argv = ['render_openwall_cves.py', '--input', str(source), '--readme', str(readme),
+                    '--output', str(output)]
+            with patch.object(sys, 'argv', argv), patch.object(r, 'fetch_text', return_value=record_json(title=RECORD_TITLE)):
+                self.assertEqual(r.main(), 0)
+            self.assertIn(f'[{STANDALONE_CVE}: {RECORD_TITLE}]({STANDALONE_URL})',
+                          readme.read_text(encoding='utf-8'))
+            self.assertIn('>1</tspan>', output.read_text(encoding='utf-8'))
+
+    def test_record_json_url_number_buckets(self):
+        for number, bucket in [('1234', '1xxx'), ('71474', '71xxx'), ('134686', '134xxx'),
+                               ('1234567', '1234xxx')]:
+            self.assertIn(f'/2025/{bucket}/CVE-2025-{number}.json',
+                          r.cve_record_json_url(f'CVE-2025-{number}'))
+
     def test_cve_org_source_formats_and_png_exclusion(self):
         escaped = CVE_ORG.replace(':', r'\:').replace('.', r'\.')
         formats = [f'{CVE_ORG} {CVE_ISSUE}',
@@ -27,9 +100,8 @@ class SourceTests(unittest.TestCase):
             self.assertEqual(r.load_sources(p), [(CVE_ORG, CVE_ISSUE)])
             self.assertEqual(r.load_urls(p), [])
 
-    def test_cve_org_requires_valid_record_and_issue(self):
-        invalid = [CVE_ORG,
-                   f'{CVE_ORG} https://github.com/gpac/gpac/pull/3848',
+    def test_cve_org_requires_valid_record_and_explicit_issue(self):
+        invalid = [f'{CVE_ORG} https://github.com/gpac/gpac/pull/3848',
                    f'{CVE_ORG} {CVE_ISSUE} https://github.com/gpac/gpac/issues/4030',
                    f'https://www.cve.org/CVERecord {CVE_ISSUE}',
                    f'https://www.cve.org/other?id=CVE-2026-134686 {CVE_ISSUE}',
