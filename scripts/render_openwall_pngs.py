@@ -1,19 +1,25 @@
 #!/usr/bin/env python3
-"""Generate a directory with PNG and TXT files per unique Openwall post."""
+"""Generate PNG/TXT cards for Openwall, NIST/NVD and CVE.org sources."""
 from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass
+from hashlib import sha256
 from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 import re
 import sys
+from urllib.error import HTTPError
 from urllib.parse import urlsplit
 
 from PIL import Image, ImageDraw, ImageFont
 
-from render_openwall_cves import fetch_text, load_urls
+from render_openwall_cves import (
+    cve_record_json_url, extract_issue_subject, extract_record_cve,
+    extract_record_subject, fetch_text, format_issue_subject, load_sources,
+    parse_cve_record,
+)
 
 FIELDS = ('Subject', 'Product', 'Affected', 'PoC', 'References', 'Reporter')
 PNG_FIELDS = ('Subject', 'Product', 'Affected', 'Reporter')
@@ -46,6 +52,7 @@ class MessageParser(HTMLParser):
 class Card:
     url: str
     fields: dict[str, str]
+    issue_url: str | None = None
 
 
 def parse_card(page: str, url: str) -> Card:
@@ -84,7 +91,86 @@ def parse_card(page: str, url: str) -> Card:
     return Card(url, fields)
 
 
-def card_filename(url: str) -> str:
+def parse_record_card(record_text: str, url: str, issue: str | None = None,
+                      issue_page: str | None = None) -> Card:
+    cve = extract_record_cve(url)
+    if not cve:
+        raise ValueError(f'Unsupported CVE record URL: {url}')
+    record = parse_cve_record(record_text, cve)
+    cna = record['containers']['cna']
+    fields = dict.fromkeys(FIELDS, '')
+    if issue:
+        if issue_page is None:
+            raise ValueError(f'GitHub issue title unavailable: {issue}')
+        fields['Subject'] = format_issue_subject(url, issue, extract_issue_subject(issue_page))
+    else:
+        fields['Subject'] = extract_record_subject(record_text, cve)
+
+    products, affected = [], []
+    for item in cna.get('affected', []):
+        vendor, product = item.get('vendor', ''), item.get('product', '')
+        name = f'{vendor}/{product}' if vendor and product and vendor.lower() != product.lower() else product or vendor
+        if name and name not in products:
+            products.append(name)
+        versions = []
+        for version in item.get('versions', []):
+            text = version.get('version', '')
+            if version.get('lessThan'):
+                text += f' to < {version["lessThan"]}'
+            if version.get('lessThanOrEqual'):
+                text += f' to <= {version["lessThanOrEqual"]}'
+            if version.get('status'):
+                text += f' ({version["status"]})'
+            if text.strip():
+                versions.append(text.strip())
+        if item.get('defaultStatus'):
+            versions.append(f'default: {item["defaultStatus"]}')
+        if versions:
+            affected.append(f'{name}: {"; ".join(versions)}' if name else '; '.join(versions))
+    fields['Product'] = '; '.join(products)
+    fields['Affected'] = '\n'.join(affected)
+    fields['Reporter'] = '; '.join(dict.fromkeys(
+        credit['value'] for credit in cna.get('credits', [])
+        if credit.get('type') in ('finder', 'reporter') and credit.get('value')
+    ))
+
+    references = [url, *([issue] if issue else []), cve_record_json_url(cve)]
+    poc = []
+    for container in [cna, *record['containers'].get('adp', [])]:
+        for reference in container.get('references', []):
+            link = reference.get('url', '')
+            if urlsplit(link).scheme not in ('http', 'https'):
+                continue
+            references.append(link)
+            if ('exploit' in reference.get('tags', [])
+                    or (urlsplit(link).hostname == 'github.com'
+                        and urlsplit(link).path.startswith('/sigdevel/pocs/'))):
+                poc.append(link)
+    fields['PoC'] = '\n'.join(dict.fromkeys(poc))
+    fields['References'] = '\n'.join(dict.fromkeys(references))
+    return Card(url, fields, issue)
+
+
+def unavailable_record_card(url: str, issue: str | None = None,
+                            issue_page: str | None = None) -> Card:
+    """Keep an explicitly listed CVE visible when its public JSON returns 404."""
+    cve = extract_record_cve(url)
+    if not cve:
+        raise ValueError(f'Unsupported CVE record URL: {url}')
+    fields = dict.fromkeys(FIELDS, '')
+    subject = (format_issue_subject(url, issue, extract_issue_subject(issue_page))
+               if issue and issue_page is not None else cve)
+    fields['Subject'] = f'{subject}: Public CVE record unavailable (HTTP 404)'
+    fields['References'] = '\n'.join([url, *([issue] if issue else []), cve_record_json_url(cve)])
+    return Card(url, fields, issue)
+
+
+def card_filename(url: str, issue: str | None = None) -> str:
+    cve = extract_record_cve(url)
+    if cve:
+        provider = 'nvd' if urlsplit(url).hostname == 'nvd.nist.gov' else 'cve'
+        identity = sha256(f'{url}\0{issue or ""}'.encode()).hexdigest()[:12]
+        return f'{provider}-{cve.lower()}-{identity}.png'
     match = re.fullmatch(r'/lists/oss-security/(\d{4})/(\d{2})/(\d{2})/(\d+)/?', urlsplit(url).path)
     if not match:
         raise ValueError(f'Unsupported Openwall post URL: {url}')
@@ -131,7 +217,9 @@ def render_png(card: Card, output: Path) -> None:
     image = Image.new('RGB', (width, height), '#0d1117')
     draw = ImageDraw.Draw(image)
     draw.rounded_rectangle((1, 1, width - 2, height - 2), radius=14, outline='#30363d', width=2)
-    draw.text((padding, 30), 'OPENWALL / OSS-SECURITY', font=label, fill='#58a6ff')
+    provider = {'nvd.nist.gov': 'NIST / NVD', 'www.cve.org': 'CVE.ORG', 'cve.org': 'CVE.ORG'}.get(
+        urlsplit(card.url).hostname, 'OPENWALL / OSS-SECURITY')
+    draw.text((padding, 30), provider, font=label, fill='#58a6ff')
     for name, lines, font, top in layout:
         draw.text((padding, top), name.upper(), font=label, fill='#8b949e')
         for i, line in enumerate(lines):
@@ -144,9 +232,11 @@ def render_png(card: Card, output: Path) -> None:
 
 
 def render_index_entry(card: Card) -> str:
-    filename = card_filename(card.url)
+    filename = card_filename(card.url, card.issue_url)
     stem = Path(filename).stem
-    lines = [f'## {escape(card.fields["Subject"])}', '', f'[![Openwall CVE card]({stem}/{filename})]({card.url})', '', f'[PoC and References (TXT)]({stem}/{stem}.txt)', '', f'Source: <{card.url}>', '']
+    lines = [f'## {escape(card.fields["Subject"])}', '', f'[![CVE card]({stem}/{filename})]({card.issue_url or card.url})', '', f'[PoC and References (TXT)]({stem}/{stem}.txt)', '', f'Source: <{card.url}>', '']
+    if card.issue_url:
+        lines += [f'Issue: <{card.issue_url}>', '']
     for name in ('PoC', 'References'):
         lines += [f'**{name}:**', '']
         lines += [f'- <{url}>' for url in card.fields[name].splitlines()] or ['Not provided in source.']
@@ -175,25 +265,39 @@ def main() -> int:
     for entry in re.split(r'(?=^## )', old_index, flags=re.MULTILINE):
         source = re.search(r'^Source: <([^>]+)>$', entry, re.MULTILINE)
         if source:
-            cached_entries[source[1]] = entry.strip()
+            issue = re.search(r'^Issue: <([^>]+)>$', entry, re.MULTILINE)
+            cached_entries[(source[1], issue[1] if issue else None)] = entry.strip()
     cards = []
     entries = []
     skipped = 0
-    # Fetch new/incomplete posts first; failures must not publish placeholders.
-    for url in load_urls(args.input):
+    # Fetch new/incomplete sources first; transient errors must not alter outputs.
+    for url, issue in load_sources(args.input):
         try:
-            filename = card_filename(url)
+            filename = card_filename(url, issue)
             stem = Path(filename).stem
             directory = args.output_dir / stem
             if not args.force and (directory / filename).is_file() and (directory / f'{stem}.txt').is_file():
                 skipped += 1
                 # Preserve the existing title and clickable links without fetching.
                 # If the index was deleted, still link the retained materials.
-                entries.append(cached_entries.get(url) or render_index_entry(Card(url, {
+                entries.append(cached_entries.get((url, issue)) or render_index_entry(Card(url, {
                     'Subject': stem, 'PoC': '', 'References': '',
-                })).strip())
+                }, issue)).strip())
                 continue
-            card = parse_card(fetch_text(url, args.timeout), url)
+            cve = extract_record_cve(url)
+            if cve:
+                issue_page = fetch_text(issue, args.timeout) if issue else None
+                try:
+                    record_text = fetch_text(cve_record_json_url(cve), args.timeout)
+                except HTTPError as exc:
+                    if exc.code != 404:
+                        raise
+                    print(f'Warning: public record unavailable for {cve} (HTTP 404)', file=sys.stderr)
+                    card = unavailable_record_card(url, issue, issue_page)
+                else:
+                    card = parse_record_card(record_text, url, issue, issue_page)
+            else:
+                card = parse_card(fetch_text(url, args.timeout), url)
             cards.append(card)
             entries.append(render_index_entry(card).strip())
         except (OSError, ValueError) as exc:
@@ -201,18 +305,18 @@ def main() -> int:
             return 1
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for card in cards:
-        filename = card_filename(card.url)
+        filename = card_filename(card.url, card.issue_url)
         stem = Path(filename).stem
         directory = args.output_dir / stem
         render_png(card, directory / filename)
         (directory / f'{stem}.txt').write_text(render_text(card), encoding='utf-8')
-    index = '# Openwall CVE cards\n\nOne card per unique source URL. PNG links are plain text; use the clickable links below.\n\n'
+    index = '# CVE cards\n\nOne card per source entry (Openwall, NIST/NVD or CVE.org). PNG links are plain text; use the clickable links below.\n\n'
     index += '\n\n'.join(entries) + '\n'
     if index != old_index:
         index_path.write_text(index, encoding='utf-8')
     # Migrate only the old flat PNGs for posts successfully generated above.
     for card in cards:
-        (args.output_dir / card_filename(card.url)).unlink(missing_ok=True)
+        (args.output_dir / card_filename(card.url, card.issue_url)).unlink(missing_ok=True)
     print(f'Generated {len(cards)} PNG cards; skipped {skipped} existing pairs in {args.output_dir}')
     return 0
 

@@ -1,4 +1,4 @@
-# Openwall card generation
+# CVE card generation
 
 Run from the repository root with Python 3.10 or newer:
 
@@ -8,8 +8,11 @@ python3 scripts/render_openwall_pngs.py
 python3 -m unittest discover -s tests
 ```
 
-The PNG renderer reads `data/openwall-cve-links.txt`, ignores comments and
-repeated URLs, and creates one directory per unique post in
+The PNG renderer reads every source from `data/openwall-cve-links.txt`:
+Openwall posts, NIST/NVD and GitHub issue pairs, and CVE.org records with or
+without a GitHub issue. It uses the same source list and deduplication as the
+summary SVG, so the number of cards matches its counter. Each source entry
+gets one directory in
 `generated/openwall-cves/`, containing a PNG card and a UTF-8 TXT file:
 
 ```text
@@ -20,30 +23,44 @@ generated/openwall-cves/openwall-2026-10-17-4/
 
 The TXT file contains only the `PoC:` and `References:` sections with full
 URLs, without visual line wrapping.
-Names include the source date and message number,
-so different posts about the same CVE remain separate cards.
+Openwall names retain the source date and message number. NVD and CVE.org
+names contain the provider, CVE identifier and a hash of the source/issue
+URLs, for example `cve-cve-2025-71474-<hash>`. Different sources or issue pairs
+about the same CVE remain separate cards, just as in the summary counter.
 
-PNG cards display Subject, Product, Affected and Reporter, parsed
-from the publication's message body, plus the source URL. PoC and References
+PNG cards display Subject, Product, Affected and Reporter, plus the source URL.
+Openwall fields are parsed from the publication's message body. NVD and
+CVE.org cards use the official `CVEProject/cvelistV5` JSON record: CNA title
+or English description, affected products and version ranges, and finder or
+reporter credits. For paired sources, Subject comes from the GitHub issue,
+using the same formatting as the README table. PoC and References
 are exported to TXT only and do not appear in the PNG. When there is no PoC section, links to
 `github.com/sigdevel/pocs/` in References are also shown as PoC. Missing fields read `Not provided in
-source`; values are never inferred. All source references are included. Text
+source`; values are never inferred. CVE records include all CNA/ADP reference
+URLs, the original source URL, the JSON URL and the issue URL when present.
+References tagged `exploit` are also exported as PoC. Text
 and long URLs wrap to fit, and image height grows with content.
 
 PNG images cannot contain clickable links. The generated Markdown index
-provides clickable PoC and reference URLs, and each image links to its source.
+provides clickable PoC and reference URLs, and each image links to its issue
+when paired, otherwise to its source.
 It also links to each TXT file. Existing flat PNGs for successfully generated
 posts are removed after generation; unrelated files are preserved.
 
-Existing PNG/TXT pairs are skipped without fetching the post or rewriting
+Existing PNG/TXT pairs are skipped without fetching the source or rewriting
 either file. If one file is missing, the pair is generated again. Existing
-index entries are retained; new entries are added for newly generated posts.
-Use `--force` to refresh all posts explicitly, for example after a design change.
+index entries are retained; new entries are added for newly generated sources.
+Use `--force` to refresh all sources explicitly, for example after a design change.
 
 Options: `--input PATH`, `--output-dir PATH`, `--timeout SECONDS`, `--force`.
-HTTPS access to `www.openwall.com` is required only for new, incomplete or
-forced posts. A fetch failure or invalid
-message exits unsuccessfully before updating any cards or the index.
+HTTPS access to `www.openwall.com`, `raw.githubusercontent.com` and, for
+paired records, `github.com` is required only for new, incomplete or forced
+sources. A fetch failure or invalid record exits unsuccessfully before updating
+any cards or the index. An official CVE JSON HTTP 404 is handled explicitly:
+the card says `Public CVE record unavailable (HTTP 404)`, keeps the CVE and
+source links, and leaves vulnerability fields empty. It does not assert that
+the CVE is reserved or invent details. Such cards are cached too; use `--force`
+after publication to refresh them. Other HTTP errors still fail generation.
 The existing `render_openwall_cves.py` still generates the summary SVG and
 README table independently. GitHub Actions runs both renderers and commits
 the generated output.
@@ -64,8 +81,9 @@ the title with `CVE-…: owner/repository`, using the repository from the issue
 URL. The repository `gpac/gpac` is displayed as `GPAC/MP4Box` (case
 insensitive); other repositories keep their names. Link destinations are
 unchanged. An existing leading CVE identifier is not repeated. The CVE cell links to NVD;
-the description links to the issue. Duplicate pairs are ignored. These pairs
-are excluded from the Openwall PNG renderer.
+the description links to the issue. Duplicate pairs are ignored. The PNG
+renderer generates cards for these pairs using the official CVE JSON fields
+and the same issue title.
 
 A standalone NVD URL that duplicates an explicit NVD/issue pair is ignored,
 regardless of line order. A standalone NVD URL without a pair is an input
@@ -107,5 +125,5 @@ reads `Subject unavailable`.
 
 Duplicate URLs are ignored. When the same CVE.org URL has an explicit GitHub
 issue pair elsewhere in the file, that pair takes precedence regardless of
-line order. All CVE.org entries are excluded from the Openwall PNG renderer.
+line order. The PNG renderer generates cards for all these CVE.org entries.
 Standalone NVD URLs still require an explicit issue pair.

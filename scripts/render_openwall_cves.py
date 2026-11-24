@@ -91,7 +91,7 @@ def load_sources(path: Path) -> list[tuple[str, str | None]]:
 
 
 def load_urls(path: Path) -> list[str]:
-    # PNG cards still consume Openwall messages only.
+    # Convenience filter for callers that need only Openwall messages.
     return [url for url, issue in load_sources(path)
             if issue is None and extract_record_cve(url) is None]
 
@@ -103,7 +103,7 @@ def cve_record_json_url(cve: str) -> str:
             f"{year}/{number[:-3]}xxx/{cve}.json")
 
 
-def extract_record_subject(record_text: str, cve: str) -> str:
+def parse_cve_record(record_text: str, cve: str) -> dict:
     record = json.loads(record_text)
     metadata = record.get("cveMetadata") if isinstance(record, dict) else None
     if not isinstance(metadata, dict) or metadata.get("cveId") != cve:
@@ -111,7 +111,12 @@ def extract_record_subject(record_text: str, cve: str) -> str:
     containers = record.get("containers")
     cna = containers.get("cna") if isinstance(containers, dict) else None
     if not isinstance(cna, dict):
-        raise ValueError("CVE record title unavailable")
+        raise ValueError("CVE record CNA data unavailable")
+    return record
+
+
+def extract_record_subject(record_text: str, cve: str) -> str:
+    cna = parse_cve_record(record_text, cve)["containers"]["cna"]
     title = cna.get("title")
     if not isinstance(title, str) or not title.strip():
         descriptions = cna.get("descriptions", [])
@@ -150,6 +155,18 @@ def extract_issue_subject(page: str) -> str:
         title = html.unescape(match[1])
     title = re.split(r"\s+·\s+Issue #\d+", title)[0]
     return re.sub(r"^\[security\]\s*", "", WS_RE.sub(" ", title).strip(), flags=re.I)
+
+
+def format_issue_subject(url: str, issue: str, subject: str) -> str:
+    cve = extract_record_cve(url)
+    if not cve:
+        raise ValueError("Unsupported CVE record URL")
+    subject = re.sub(rf"^{re.escape(cve)}\b\s*:?\s*", "", subject, flags=re.I)
+    if urlsplit(url).hostname == "nvd.nist.gov":
+        repository = "/".join(urlsplit(issue).path.strip("/").split("/")[:2])
+        repository = REPOSITORY_ALIASES.get(repository.lower(), repository)
+        subject = f"{repository} {subject}"
+    return f"{cve}: {subject}"
 
 
 def fetch_text(url: str, timeout: int) -> str:
@@ -210,14 +227,7 @@ def collect_posts(urls: list[str | tuple[str, str | None]], timeout: int) -> lis
                     raise ValueError("Unsupported CVE record URL")
                 subject = extract_issue_subject(fetch_text(issue, timeout))
                 cves = (cve,)
-                subject = re.sub(
-                    rf"^{re.escape(cves[0])}\b\s*:?\s*", "", subject, flags=re.I
-                )
-                if urlsplit(url).hostname == "nvd.nist.gov":
-                    repository = "/".join(urlsplit(issue).path.strip("/").split("/")[:2])
-                    repository = REPOSITORY_ALIASES.get(repository.lower(), repository)
-                    subject = f"{repository} {subject}"
-                subject = f"{cve}: {subject}"
+                subject = format_issue_subject(url, issue, subject)
                 posts.append(CvePost(url=issue, subject=subject, cves=cves, cve_url=url))
                 continue
             if urlsplit(url).hostname in {"www.cve.org", "cve.org"}:
@@ -291,10 +301,10 @@ def render_svg(posts: list[CvePost], output: Path) -> None:
         "<style>* { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Sans-Serif; } .title { font-size: 22px; fill: #58a6ff; font-weight: 600; } .meta { font-size: 12px; fill: #8b949e; } .metric-number { font-size: 20px; fill: #f0f6fc; font-weight: 700; } .cve { font-size: 14px; fill: #f0f6fc; font-weight: 600; } .subject { font-size: 13px; fill: #8b949e; }</style>",
         '<rect x="1" y="1" rx="5" ry="5" height="99%" width="99.714%" stroke="#2e343b" stroke-width="1" fill="#0d1117"/>',
         '<text x="30" y="38" class="title">Сaptured CVE IDs</text>',
-        f'<text x="30" y="58" class="meta"><tspan class="metric-number">{len(posts)}</tspan> tracked oss-security post(s)</text>',
+        f'<text x="30" y="58" class="meta"><tspan class="metric-number">{len(posts)}</tspan> tracked CVE source(s)</text>',
     ]
 
-    lines.append(f'<text x="30" y="{height - 10}" class="meta">Source: Openwall oss-security Subject headers</text>')
+    lines.append(f'<text x="30" y="{height - 10}" class="meta">Sources: Openwall, NIST/NVD and CVE.org</text>')
     lines.append("</svg>")
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text("\n".join(lines) + "\n", encoding="utf-8")

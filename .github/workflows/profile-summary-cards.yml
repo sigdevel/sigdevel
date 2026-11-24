@@ -29,9 +29,9 @@ jobs:
           python-version: '3.12'
       - name: Install PNG renderer dependencies
         run: python3 -m pip install -r scripts/requirements.txt
-      - name: Test PNG renderer
+      - name: Test CVE renderers
         run: python3 -m unittest discover -s tests
-      - name: Render individual Openwall PNG cards
+      - name: Render Openwall, NVD and CVE.org PNG cards
         run: python3 scripts/render_openwall_pngs.py
       - name: Commit CVE watch card
         run: |
